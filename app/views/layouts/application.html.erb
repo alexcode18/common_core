@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+	<div id="popup">
+		<div id="popup_book">
+			<h4>The window behind things</h4>
+		</div>
+		<div id="popup_bkgd">
+		</div>
+	</div>
+	<header>
+		<nav>
+			<h1><a href="/">Pic Em'</a></h1>
+			<ul>
+				<li><a href="/posts">posts</li>
+				<li><a href="/tags">tags</li>
+				<li><a href="/authors">authors</li>
+			</ul>
+		</nav>
+	</header>
+	<div id="container">
+		<div id="columns">
+		</div>
+	</div>
+</body>
+</html>

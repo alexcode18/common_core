@@ -1,0 +1,10 @@
+<div class="book_hover">
+	<h4>{{title}}</h4>
+	<p>{{author.username}}</p><p>{{date}}</p>
+</div>
+<img class="thumbnail" src="{{img_url}}">
+<div class="tags_container">
+	<% _.forEach(tags, function (tag, i) { %>
+        <p> <%= tag.name %> </p>
+    <% }); %>
+</div>
