@@ -9,8 +9,8 @@ App.Views.PostPreviewView = Backbone.View.extend({
 	},
 	render: function() {
 		
-		var tagsArray = this.model.toJSON().tags;
+		// var tagsArray = this.model.toJSON().tags;
 		this.$el.html(this.template(this.model.toJSON()));
-		console.log(tagsArray);
+		// console.log(tagsArray);
 	}
 });
