@@ -40,6 +40,7 @@ $(function() {
 	console.log(App.postsListView);
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
+	App.bookModalView = new App.Views.BookModalView();
 });
 
 function renderImageHover(){

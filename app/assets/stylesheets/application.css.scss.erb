@@ -16,6 +16,16 @@
 
 @import url(http://fonts.googleapis.com/css?family=Raleway:400,500,600,700);
 
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
 body {
 	font-family: 'Raleway', Arial, sans-serif;
 	letter-spacing: 2px;
@@ -23,10 +33,10 @@ body {
 }
 
 header {
-	background: darkred;
+	background: green;
 	height: 20px;
 	padding: 20px;
-	box-shadow: 0px 2px 6px grey;
+	box-shadow: 0px 2px 8px black;
 	line-height:15px;
 	position: fixed;
 	top: 0;
@@ -40,27 +50,28 @@ header a {
 	color: white;
 }
 
-li {
+header li {
 	display: inline;
 	color: white;
 	padding: 5px 10px;
 	margin: 0 5px;
 	cursor: pointer;
 	border-radius: 10px;
-	box-shadow: 0px 0px 6px #044691;
+	box-shadow: 0px 0px 6px black;
 }
 
-li:hover {
-	box-shadow: 0px 0px 3px #044691;
+header li:hover {
+	box-shadow: 0px 0px 3px black;
 }
 
 h1 {
 	text-transform: uppercase;
 	float: left;
-	margin-right: 30px;
+	margin: 0px auto;
 	color: white;
 	font-size: 30px;
-	margin-top: -5px;
+	text-shadow: 2px 2px 0px black;
+	letter-spacing: 5px;
 }
 
 h4 {
@@ -78,9 +89,9 @@ h4 {
 	background: white;
 	z-index: 20;
 	top: 20%;
-	left: 30%;
-	width: 600px;
-	height: 400px;
+	left: 15%;
+	right: 15%;
+	height: 60%;
 }
 
 #popup_book,
@@ -96,6 +107,16 @@ h4 {
 	height: 100%;
 	background: white;
 	opacity: 0.3;
+}
+
+.prev_button,
+.modal_image {
+	float: left;
+}
+
+.close_button,
+.next_button {
+	float: right;
 }
 
 #container,

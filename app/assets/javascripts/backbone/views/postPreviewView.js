@@ -7,10 +7,14 @@ App.Views.PostPreviewView = Backbone.View.extend({
 		this.listenTo(this.model, 'remove', this.render);
 		this.render();
 	},
+	events: {
+		'click  .book_hover': 'showBookInModal'
+	},
 	render: function() {
-		
-		// var tagsArray = this.model.toJSON().tags;
 		this.$el.html(this.template(this.model.toJSON()));
-		// console.log(tagsArray);
+	},
+	showBookInModal: function() {
+		console.log('telling modal view to render');
+		App.bookModalView.showBook(this.model);
 	}
 });
