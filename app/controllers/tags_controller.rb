@@ -2,12 +2,17 @@ class TagsController < ApplicationController
   
   def index
   	@tags = Tag.all
-  	render json: @tags
+  	render json: @tags.to_json(include: [:posts])
+  end
+
+  def show
+    @tag = Tag.find(params[:id])
+    render json: @post.to_json(include: [:posts])
   end
 
   def create
   	@tag = Tag.create(tag_params)
-  	render json: @tag
+  	render json: @tag.to_json(include: [:posts])
   end
 
   def update

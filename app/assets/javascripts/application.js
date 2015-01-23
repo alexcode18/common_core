@@ -33,6 +33,10 @@ var App = {
 
 $(function() {
 	App.posts = new App.Collections.PostCollection();
+	App.tags = new App.Collections.TagCollection();
+	
+	App.tagsListView = new App.Views.TagsListView({collection: App.tags});
+	App.tags.fetch({reset: true});
 	// App.authors = new App.Collections.AuthorCollection();
 	// App.authors.fetch({reset: true});
 	App.postsListView = new App.Views.PostsListView({collection: App.posts});
