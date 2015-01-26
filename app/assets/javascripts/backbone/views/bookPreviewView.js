@@ -1,14 +1,16 @@
-App.Views.PostPreviewView = Backbone.View.extend({
+App.Views.BookPreviewView = Backbone.View.extend({
 	tagName: 'div',
 	className: 'post_box',
 	initialize: function() {
-		this.template = HandlebarsTemplates['postPreview'];
+		this.template = HandlebarsTemplates['bookPreview'];
 		this.listenTo(this.model, 'change', this.render);
 		this.listenTo(this.model, 'remove', this.render);
 		this.render();
 	},
 	events: {
-		'click  .book_hover': 'showBookInModal'
+		'click .book_hover': 'showBookInModal',
+		// 'mouseenter .post_box': 'renderImageHover',
+		// 'mouseleave .post_box': 'hideImageHover'
 	},
 	render: function() {
 		this.$el.html(this.template(this.model.toJSON()));

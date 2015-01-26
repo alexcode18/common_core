@@ -27,12 +27,12 @@ App.Views.BookModalView = Backbone.View.extend({
 		this.$el.parent().css('display', 'block');
 	},
 	prevBook: function() {
-		this.model = App.posts.get(this.model.toJSON().id - 1);
+		this.model = App.books.get(this.model.toJSON().id - 1);
 		console.log(this.model);
 		this.renderBook();
 	},
 	nextBook: function() {
-		this.model = App.posts.get(this.model.toJSON().id + 1);
+		this.model = App.books.get(this.model.toJSON().id + 1);
 		console.log(this.model);
 		this.renderBook();
 	}

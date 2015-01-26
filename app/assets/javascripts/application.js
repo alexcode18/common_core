@@ -32,19 +32,26 @@ var App = {
 
 
 $(function() {
-	App.posts = new App.Collections.PostCollection();
+	App.books = new App.Collections.BookCollection();
 	App.tags = new App.Collections.TagCollection();
 	
 	App.tagsListView = new App.Views.TagsListView({collection: App.tags});
 	App.tags.fetch({reset: true});
 	// App.authors = new App.Collections.AuthorCollection();
 	// App.authors.fetch({reset: true});
-	App.postsListView = new App.Views.PostsListView({collection: App.posts});
-	App.posts.fetch({reset: true});
-	console.log(App.postsListView);
+	App.booksListView = new App.Views.BooksListView({collection: App.books});
+	App.books.fetch({reset: true});
+	console.log(App.booksListView);
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
+	// $('body').on('click', '.tag', showTaggedBooks);
+	// $('window').on('scroll', 'body', 'scrollAndShow');
 	App.bookModalView = new App.Views.BookModalView();
+	// $(window).scroll(function() {
+ //    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+ //           App.booksListView.getMore();// ajax call get data from server and append to the div
+ //    }
+	// });
 });
 
 function renderImageHover(){
@@ -59,4 +66,9 @@ function hideImageHover(){
 	var imageHover = $(this).find('.book_hover');
 	imageHover.css('display', 'none');
 }
+
+// function scrollAndShow(){
+// 	console.log('scrollAndShow');
+// 	App.booksListView.showMore();
+// }
 

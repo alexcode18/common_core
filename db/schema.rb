@@ -16,27 +16,20 @@ ActiveRecord::Schema.define(version: 20150116010050) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "authors", force: true do |t|
-    t.string   "username"
-    t.string   "img_url"
-    t.string   "bio"
-    t.string   "location"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  create_table "posts", force: true do |t|
-    t.string   "content"
+  create_table "books", force: true do |t|
     t.string   "title"
-    t.string   "img_url"
-    t.integer  "author_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "author"
+    t.text     "description"
+    t.string   "isbn"
+    t.string   "imprint"
+    t.string   "copyright"
+    t.string   "cover_price"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  create_table "posts_tags", id: false, force: true do |t|
-    t.integer "post_id"
+  create_table "books_tags", id: false, force: true do |t|
+    t.integer "book_id"
     t.integer "tag_id"
   end
 

@@ -2,9 +2,11 @@ Rails.application.routes.draw do
 
   root to: 'application#index'
   
-  resources :posts, except: [:new, :edit]
+  resources :books, except: [:new, :edit]
+  get 'books/get_more' => 'books#get_more'
   resources :tags, except: [:new, :edit]
-  resources :authors, except: [:new, :edit]
+
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
