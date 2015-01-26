@@ -6,22 +6,21 @@ App.Views.TagView = Backbone.View.extend({
 		this.renderTag();
 	},
 	events: {
-		'click .tag':'getTagBooks'
+		'click':'getTagBooks'
 	},
 	renderTag: function() {
 		this.$el.html(this.template(this.model.toJSON()));
 	},
 	getTagBooks: function() {
 		console.log('getTagBooks');
-		pickedBooks = this.model.books;
+		pickedBooks = this.model.toJSON().books;
+		// App.books = pickedBooks;
 		console.log(pickedBooks);
-		// App.books = Book.find();
 		// var this = getThis();
 		// this.tag = tag.toJSON().id;
 		// console.log(this.tag);
 		// this.$el.append(this.template(tag.toJSON()));
-		
-		// App.postsListView = new App.Views.PostsListView({collection: App.posts});
-		// App.posts.fetch({reset: true});
+		App.booksListView = new App.Views.BooksListView({collection: this.model.collection});
+		// pickedBooks.fetch({reset: true});
 	}
 })

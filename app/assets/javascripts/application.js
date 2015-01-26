@@ -34,13 +34,14 @@ var App = {
 $(function() {
 	App.books = new App.Collections.BookCollection();
 	App.tags = new App.Collections.TagCollection();
-	
+	console.log(App.books);
 	App.tagsListView = new App.Views.TagsListView({collection: App.tags});
 	App.tags.fetch({reset: true});
 	// App.authors = new App.Collections.AuthorCollection();
 	// App.authors.fetch({reset: true});
 	App.booksListView = new App.Views.BooksListView({collection: App.books});
 	App.books.fetch({reset: true});
+	console.log('App.books' + App.books);
 	console.log(App.booksListView);
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
