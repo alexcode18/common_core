@@ -6,7 +6,7 @@ App.Views.TagView = Backbone.View.extend({
 		this.renderTag();
 	},
 	events: {
-		'click button':'getTagBooks'
+		'click .tag':'getTagBooks'
 	},
 	renderTag: function() {
 		this.$el.html(this.template(this.model.toJSON()));
