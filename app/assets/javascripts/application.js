@@ -44,16 +44,16 @@ $(function() {
 
 	console.log('App.books' + App.books);
 	console.log(App.booksListView);
+	App.bookModalView = new App.Views.BookModalView();
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
 	$('body').on('mousedown', '#open_menu', displayTagMenu);
-	App.bookModalView = new App.Views.BookModalView();
+	
 	$(window).scroll(function() {
     if($(window).scrollTop() == $(document).height() - $(window).height()) {
-           App.books.fetchMoreBooks();// ajax call get data from server and append to the div
+    	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
     }
 	});
-
 });
 
 function renderImageHover(){
@@ -81,9 +81,4 @@ function displayTagMenu(){
 		}
 	});
 }
-
-// function scrollAndShow(){
-// 	console.log('scrollAndShow');
-// 	App.booksListView.showMore();
-// }
 

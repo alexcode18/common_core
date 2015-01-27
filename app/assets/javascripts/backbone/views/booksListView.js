@@ -1,7 +1,7 @@
 App.Views.BooksListView = Backbone.View.extend({
 	el: '#columns',
 	initialize: function(){
-		this.offset = 15;
+		// this.offset = 15;
 		console.log('initialize Books List View');
 		console.log(this.collection);
 		this.renderAllPreviewBooks();
@@ -20,18 +20,18 @@ App.Views.BooksListView = Backbone.View.extend({
 		console.log('rendered Book Preview');
 		var bookModel = new App.Views.BookPreviewView({model: book});
 		this.$el.append(bookModel.$el);
-	},
-	getMore: function() {
-		console.log('start getting more');
-		newOffset = {
-			offset: this.offset
-		}
-		$.get('books/get_more', newOffset)
-		.done(function(data){
-			console.log(data);
-			this.collection = data;
-			this.renderAllPreviewBooks();
-			this.offset += 15;
-		});
+	// },
+	// getMore: function() {
+	// 	console.log('start getting more');
+	// 	newOffset = {
+	// 		offset: this.offset
+	// 	}
+	// 	$.get('books/get_more', newOffset)
+	// 	.done(function(data){
+	// 		console.log(data);
+	// 		this.collection = data;
+	// 		this.renderAllPreviewBooks();
+	// 		this.offset += 15;
+	// 	});
 	}
 });

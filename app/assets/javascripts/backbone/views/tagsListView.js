@@ -10,6 +10,18 @@ App.Views.TagsListView = Backbone.View.extend({
 	},
 	renderTag: function(tag) {
 		var tagModel = new App.Views.TagView({model: tag});
-		this.$el.append(tagModel.$el);
+		console.log(tag.name);
+		if (tag.get('name').match(/\d+/)) {
+			this.$el.find('#grades').append(tagModel.$el);
+		} else {
+			this.$el.find('#categories').append(tagModel.$el);
+		}
 	}
+	// renderModalTags: function() {
+	// 	this.collection.each(this.getModalTag, this);
+	// },
+	// getModalTag: function(tag) {
+	// 	var tagModel = new App.Views.TagView({model: tag});
+	// 	$('.tags_container').append(tagModel.$el);
+	// }
 });

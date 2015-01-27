@@ -13,6 +13,10 @@ App.Views.BookModalView = Backbone.View.extend({
 		this.$el.empty();
 		console.log(this.model.toJSON());
 		this.$el.html(this.template(this.model.toJSON()));
+		// var tags = this.model.get('tags');
+		// var tagsCollection = new App.Collections.TagCollection({collection: tags}).renderModalTags();
+		// var tagsList = new App.Views.TagsListView({collection: tagsCollection});
+		
 		this.show();
 	},
 	showBook: function(model) {
@@ -27,13 +31,15 @@ App.Views.BookModalView = Backbone.View.extend({
 		this.$el.parent().css('display', 'block');
 	},
 	prevBook: function() {
-		this.model = App.books.get(this.model.toJSON().id - 1);
-		console.log(this.model);
-		this.renderBook();
+		if (App.books.get(this.model.toJSON().id - 1)) {
+			this.model = App.books.get(this.model.toJSON().id - 1);
+			this.renderBook();
+		}
 	},
 	nextBook: function() {
-		this.model = App.books.get(this.model.toJSON().id + 1);
-		console.log(this.model);
-		this.renderBook();
+		if (App.books.get(this.model.toJSON().id + 1)) {	
+			this.model = App.books.get(this.model.toJSON().id + 1);
+			this.renderBook();
+		}
 	}
 });

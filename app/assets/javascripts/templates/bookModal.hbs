@@ -1,15 +1,15 @@
 <div class="modal_box">
-	<button class="prev_button">previous</button>
+	<button class="prev_button arrow"><</button>
+	<button class="next_button arrow">></button>
 	<div class="modal_item modal_image">
 		<img class="modal_book_cover" src="http://img2.imagesbn.com/p/{{isbn}}_p0_v3_s260x420.JPG">
 	</div>
 	<div class="modal_item close">
-		<button class="close_button">close</button>
+		<button class="close_button">x</button>
 	</div>
-	
 	<div>
-		<h4>{{title}}</h4>
-		<h5 class="author modal_p">{{author}}</h5>
+		<h3>{{title}}</h3>
+		<h4 class="author modal_p">{{author}}</h4>
 		<p class="clearfix">{{description}}</p>
 		<div class="tags_container">
 			{{#each tags}}
@@ -17,5 +17,5 @@
 		  {{/each}}
 		</div>
 	</div>
-	<button class="next_button">next</button>
+	
 </div>

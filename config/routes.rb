@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'application#index'
   
   resources :books, except: [:new, :edit]
-  get 'books/get_more' => 'books#get_more'
+  get '/get_more',to: 'books#get_more'
   resources :tags, except: [:new, :edit]
 
   
