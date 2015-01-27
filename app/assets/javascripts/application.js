@@ -33,26 +33,27 @@ var App = {
 
 $(function() {
 	App.books = new App.Collections.BookCollection();
-	App.tags = new App.Collections.TagCollection();
-	console.log(App.books);
-	App.tagsListView = new App.Views.TagsListView({collection: App.tags});
-	App.tags.fetch({reset: true});
-	// App.authors = new App.Collections.AuthorCollection();
-	// App.authors.fetch({reset: true});
 	App.booksListView = new App.Views.BooksListView({collection: App.books});
 	App.books.fetch({reset: true});
+
+	App.tags = new App.Collections.TagCollection();
+	console.log(App.books);
+
+	App.tagsListView = new App.Views.TagsListView({collection: App.tags});
+	App.tags.fetch({reset: true});
+
 	console.log('App.books' + App.books);
 	console.log(App.booksListView);
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
-	// $('body').on('click', '.tag', showTaggedBooks);
-	// $('window').on('scroll', 'body', 'scrollAndShow');
+	$('body').on('mousedown', '#open_menu', displayTagMenu);
 	App.bookModalView = new App.Views.BookModalView();
-	// $(window).scroll(function() {
- //    if($(window).scrollTop() == $(document).height() - $(window).height()) {
- //           App.booksListView.getMore();// ajax call get data from server and append to the div
- //    }
-	// });
+	$(window).scroll(function() {
+    if($(window).scrollTop() == $(document).height() - $(window).height()) {
+           App.books.fetchMoreBooks();// ajax call get data from server and append to the div
+    }
+	});
+
 });
 
 function renderImageHover(){
@@ -66,6 +67,19 @@ function renderImageHover(){
 function hideImageHover(){
 	var imageHover = $(this).find('.book_hover');
 	imageHover.css('display', 'none');
+}
+
+function displayTagMenu(){
+	$('#tags_list').slideToggle({
+		duration: 800,
+		complete: function(){
+			if ($('#tags_list').css('display') == 'none') {
+				$('#open_menu').text('show more');	
+			} else {
+				$('#open_menu').text('hide');
+			}
+		}
+	});
 }
 
 // function scrollAndShow(){

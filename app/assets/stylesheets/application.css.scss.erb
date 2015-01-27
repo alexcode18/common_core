@@ -33,16 +33,16 @@ body {
 }
 
 header {
-	background: green;
-	height: 20px;
-	padding: 20px;
+	background: #B62025;
 	box-shadow: 0px 2px 8px black;
 	line-height:15px;
 	position: fixed;
 	top: 0;
-	left: 0;
+	left: 0; 
 	z-index: 21;
 	width: 100%;
+	padding-top: 20px;
+	color: white;
 }
 
 header a {
@@ -50,54 +50,69 @@ header a {
 	color: white;
 }
 
-header li {
+/*header li {
 	display: inline;
 	color: white;
-	padding: 5px 10px;
 	margin: 0 5px;
 	cursor: pointer;
 	border-radius: 10px;
 	box-shadow: 0px 0px 6px black;
-}
+	
+}*/
 
-header li:hover {
-	box-shadow: 0px 0px 3px black;
-}
+/*nav {
+	padding: 20px;
+}*/
 
 h1 {
 	text-transform: uppercase;
-	float: left;
-	margin: 0px auto;
-	color: white;
 	font-size: 30px;
 	text-shadow: 2px 2px 0px black;
 	letter-spacing: 5px;
+	width: 100%;
+	padding:20px 0px;
+	padding-top: 0;
+	text-align: center;
+	border-bottom: 1px solid white;
 }
 
 h4 {
 	text-align: center;
 	font-weight: bold;
 	font-size: 18px;
-	padding:20px;
 }
 
 #menu {
-	width: 220px;
-	background: green;
-	float: left;
+	width: 100%;
+	background: #99161F;
+}
+
+#tags_list {
+	display: none;
+}
+
+#open_menu {
+	height: 20px;
+	border-top: 1px solid white;
+	background: #6D9D31;
+	padding-bottom: 5px;
+	padding-top: 10px;
+	text-align: center;
 }
 
 button {
 	background: none;
 	border: none;
-	color: black;
-	box-shadow: 0px 0px 6px black;
+	color: white;
+	font-size: 12px;
+	/*box-shadow: 0px 0px 6px black;*/
 	/*border-radius: 10%;
 	-moz-border-radius: 10%;
-	-webkit-border-radius: 10%;*/
-	/*width: 90%;*/
-	padding: 5px 10px;
-	margin: 5px;
+	-webkit-border-radius: 10%;
+	width: 90%;*/
+	padding: 3px 9px;
+	margin: 2px;
+	border-bottom: 1px solid white;
 }
 
 button:hover {
@@ -149,8 +164,7 @@ button:hover {
 }
 
 #container {
-	margin-top: 100px;
-	padding-left: 210px;
+	margin-top: 120px;
 }
 
 #columns {
@@ -164,8 +178,7 @@ button:hover {
 	-moz-column-gap: 2px;
 	-o-column-gap: 2px;
 	-ms-column-gap: 2px;
-	width: 95%;
-
+	width: 100%;
 }
 
 .post_box {

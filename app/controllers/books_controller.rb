@@ -2,12 +2,13 @@ class BooksController < ApplicationController
   
   def index
   	# @books = Book.limit(15)
-    @books = Book.all
+    @books = Book.limit(15)
   	render json: @books.to_json(include: [:tags])
   end
 
   def get_more
     offset_by = params[:offset].to_i
+    binding.pry
     if offset_by < Book.count - offset_by
       @books = Book.offset(offset_by).limit(15).order(:id)
     end
