@@ -2,6 +2,7 @@ App.Views.BooksListView = Backbone.View.extend({
 	el: '#columns',
 	initialize: function(){
 		// this.offset = 15;
+		this.$el.empty();
 		console.log('initialize Books List View');
 		console.log(this.collection);
 		this.renderAllPreviewBooks();
@@ -12,7 +13,6 @@ App.Views.BooksListView = Backbone.View.extend({
 	// 	'click #columns':'showMore'
 	// },
 	renderAllPreviewBooks: function(){
-		this.$el.empty();
 		console.log('renderAllPreviewBooks');
 		this.collection.each(this.renderPreviewView, this);
 	},

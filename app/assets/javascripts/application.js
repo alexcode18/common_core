@@ -35,7 +35,6 @@ $(function() {
 	App.books = new App.Collections.BookCollection();
 	App.booksListView = new App.Views.BooksListView({collection: App.books});
 	App.books.fetch({reset: true});
-
 	App.tags = new App.Collections.TagCollection();
 	console.log(App.books);
 
@@ -48,7 +47,9 @@ $(function() {
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
 	$('body').on('mousedown', '#open_menu', displayTagMenu);
+
 	
+
 	$(window).scroll(function() {
     if($(window).scrollTop() == $(document).height() - $(window).height()) {
     	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
