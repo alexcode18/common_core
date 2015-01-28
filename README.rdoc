@@ -1,28 +1,37 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+THE COMMON CORE BOOK APP
+_________________________
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
+////////////////////////////////
+// Site Structures/Frameworks //
+////////////////////////////////
+
+Ruby 2.1.2
+Backbone.js
+Underscore.js
+
+////////////////////////////////
+//          Overview          //
+////////////////////////////////
+
+The Common Core App enables educators to easily find which books would be appropriate for their classroom based on federal government standards.
+
+////////////////////////////////
+//        User Stories        //
+////////////////////////////////
+
+1. A user should be able to browse through the entire list of titles without interruption.
+
+2. A user should be able to easily look up books by grade level or category.
+
+////////////////////////////////
+//          Features          //
+////////////////////////////////
+
+- Large preview images with hover descriptions
+- A modal that features individual books (can move to the next and previous book on the list)
+- Infinite scroll list for faster load time.
+- The book collection can be narrowed by search by one of the tags featured in the top menu.
+
+
