@@ -41,8 +41,6 @@ $(function() {
 	App.tagsListView = new App.Views.TagsListView({collection: App.tags});
 	App.tags.fetch({reset: true});
 
-	console.log('App.books' + App.books);
-	console.log(App.booksListView);
 	App.bookModalView = new App.Views.BookModalView();
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
@@ -50,16 +48,15 @@ $(function() {
 	$('body').on('mousedown', 'h1', refreshPage);
 	// $(window).on('scroll', '#open_menu', displayTagMenu);
 
-	// $(window).scroll(function() {
-	// 	if ($(window).scrollTop() == $(document).height() - $(window).height()){
- //    	console.log('trying to see how many times this runs');
- //    	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
- //    }
-	// });
+	$(window).scroll(function() {
+		if ($(window).scrollTop() == $(document).height() - $(window).height()){
+    	console.log('trying to see how many times this runs');
+    	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
+    }
+	});
 });
 
 function refreshPage(){
-	console.log('refreshPage');
 	App.books = new App.Collections.BookCollection();
 	App.booksListView = new App.Views.BooksListView({collection: App.books});
 	App.books.fetch({reset: true});
@@ -68,7 +65,6 @@ function refreshPage(){
 }
 
 function renderImageHover(){
-	console.log('should be rendering HoverHeight');
 	var imageWidth = $(this).find('.thumbnail').css('width');
 	var imageHover = $(this).find('.book_hover');
 	imageHover.css('width', imageWidth);

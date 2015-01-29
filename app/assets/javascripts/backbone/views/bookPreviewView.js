@@ -8,7 +8,7 @@ App.Views.BookPreviewView = Backbone.View.extend({
 		this.render();
 	},
 	events: {
-		'click .book_hover': 'showBookInModal',
+		'click': 'showBookInModal',
 		// 'mouseenter': 'renderImageHover',
 		// 'mouseleave': 'hideImageHover'
 	},

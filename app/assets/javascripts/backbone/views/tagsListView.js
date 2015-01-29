@@ -10,7 +10,6 @@ App.Views.TagsListView = Backbone.View.extend({
 	},
 	renderTag: function(tag) {
 		var tagModel = new App.Views.TagView({model: tag});
-		console.log(tag.name);
 		if (tag.get('name').match(/\d+/)) {
 			this.$el.find('#grades').append(tagModel.$el);
 		} else {

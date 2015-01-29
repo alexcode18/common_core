@@ -1,19 +1,15 @@
 class BooksController < ApplicationController
   
   def index
-  	# @books = Book.limit(15)
-    @books = Book.all.order(title: :asc)
+    @books = Book.limit(30).order(title: :asc)
   	render json: @books.to_json(include: [:tags])
   end
 
-  # def get_more
-  #   offset_by = params[:offset].to_i
-  #   if offset_by < Book.count - offset_by
-  #     @books = Book.offset(offset_by).limit(30).order(title: :asc)
-  #     render json: @books.to_json(include: [:tags])
-  #   end
-  #   puts 'done'
-  # end
+  def get_more
+    offset_by = params[:offset].to_i
+    @books = Book.offset(offset_by).limit(30).order(title: :asc)
+    render json: @books.to_json(include: [:tags])
+  end
 
   def show
     @book = Book.find(params[:id])
