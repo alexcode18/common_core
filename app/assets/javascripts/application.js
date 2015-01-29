@@ -47,6 +47,7 @@ $(function() {
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
 	$('body').on('mousedown', '#open_menu', displayTagMenu);
+	$('body').on('mousedown', 'h1', refreshPage);
 	// $(window).on('scroll', '#open_menu', displayTagMenu);
 
 	// $(window).scroll(function() {
@@ -56,6 +57,15 @@ $(function() {
  //    }
 	// });
 });
+
+function refreshPage(){
+	console.log('refreshPage');
+	App.books = new App.Collections.BookCollection();
+	App.booksListView = new App.Views.BooksListView({collection: App.books});
+	App.books.fetch({reset: true});
+	// App.booksListView = new App.Views.BooksListView({collection: App.books});
+	// App.books.fetch({reset: true});
+}
 
 function renderImageHover(){
 	console.log('should be rendering HoverHeight');
