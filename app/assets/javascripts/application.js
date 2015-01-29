@@ -69,9 +69,9 @@ function refreshPage(){
 
 function renderImageHover(){
 	console.log('should be rendering HoverHeight');
-	var imageHeight = $(this).find('.thumbnail').css('height');
+	var imageWidth = $(this).find('.thumbnail').css('width');
 	var imageHover = $(this).find('.book_hover');
-	imageHover.css('height', imageHeight);
+	imageHover.css('width', imageWidth);
 	imageHover.css('display', 'block');
 }
 
