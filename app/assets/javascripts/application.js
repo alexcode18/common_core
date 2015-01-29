@@ -47,14 +47,14 @@ $(function() {
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
 	$('body').on('mousedown', '#open_menu', displayTagMenu);
+	// $(window).on('scroll', '#open_menu', displayTagMenu);
 
-	
-
-	$(window).scroll(function() {
-    if($(window).scrollTop() == $(document).height() - $(window).height()) {
-    	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
-    }
-	});
+	// $(window).scroll(function() {
+	// 	if ($(window).scrollTop() == $(document).height() - $(window).height()){
+ //    	console.log('trying to see how many times this runs');
+ //    	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
+ //    }
+	// });
 });
 
 function renderImageHover(){

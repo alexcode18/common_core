@@ -3,13 +3,15 @@ App.Collections.BookCollection = Backbone.Collection.extend({
 	url: '/books',
 	initialize: function() {
 		console.log('new Book collection created');
-	},
-	fetchMoreBooks: function() {
 		this.offset = 30;
-		this.fetch({
-			url: '/get_more',
-			data: {offset: this.offset}
-		});
-		this.offset += 30;
+	// },
+	// fetchMoreBooks: function() {
+	// 	this.fetch({
+	// 		url: '/get_more',
+	// 		data: {offset: this.offset},
+	// 		success: _.bind(function(e){
+ //        this.offset += 30;
+ //      }, this)    
+	// 	});	
 	}
 });
