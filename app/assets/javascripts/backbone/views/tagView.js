@@ -14,12 +14,7 @@ App.Views.TagView = Backbone.View.extend({
 	getTagBooks: function() {
 		console.log('getTagBooks');
 		pickedBooks = this.model.toJSON().books;
-		// App.books = pickedBooks;
 		console.log(pickedBooks);
-		// var this = getThis();
-		// this.tag = tag.toJSON().id;
-		// console.log(this.tag);
-		// this.$el.append(this.template(tag.toJSON()));
 		var books = new App.Collections.BookCollection();
 		books.add(this.model.get('books'));
 		App.booksListView = new App.Views.BooksListView({collection: books});

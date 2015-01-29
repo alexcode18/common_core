@@ -1,4 +1,4 @@
-App.Views.BookModalView = Backbone.View.extend({
+ App.Views.BookModalView = Backbone.View.extend({
 	el: '#popup_book',
 	initialize: function(){
 		
@@ -14,9 +14,6 @@ App.Views.BookModalView = Backbone.View.extend({
 		this.$el.empty();
 		console.log(this.model.toJSON());
 		this.$el.html(this.template(this.model.toJSON()));
-		// var tags = this.model.get('tags');
-		// var tagsCollection = new App.Collections.TagCollection({collection: tags}).renderModalTags();
-		// var tagsList = new App.Views.TagsListView({collection: tagsCollection});
 		
 		this.show();
 	},
