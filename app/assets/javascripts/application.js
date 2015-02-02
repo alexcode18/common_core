@@ -32,6 +32,7 @@ var App = {
 
 
 $(function() {
+	App.starterOffset = 30;
 	App.books = new App.Collections.BookCollection();
 	App.booksListView = new App.Views.BooksListView({collection: App.books});
 	App.books.fetch({reset: true});
@@ -40,23 +41,26 @@ $(function() {
 
 	App.tagsListView = new App.Views.TagsListView({collection: App.tags});
 	App.tags.fetch({reset: true});
+	App.tagID = undefined;
 
+	//This variable is mentioned in bookCollection.js and tagView.js
+	// It aligns with the limit used in the controller to setup how many books load at a time.
 	App.bookModalView = new App.Views.BookModalView();
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
 	$('body').on('mousedown', '#open_menu', displayTagMenu);
 	$('body').on('mousedown', 'h1', refreshPage);
-	// $(window).on('scroll', '#open_menu', displayTagMenu);
 
 	$(window).scroll(function() {
 		if ($(window).scrollTop() == $(document).height() - $(window).height()){
-    	console.log('trying to see how many times this runs');
     	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
     }
 	});
 });
 
 function refreshPage(){
+	App.tagID = undefined;
+	App.offset = App.starterOffset;
 	App.books = new App.Collections.BookCollection();
 	App.booksListView = new App.Views.BooksListView({collection: App.books});
 	App.books.fetch({reset: true});
@@ -68,7 +72,7 @@ function renderImageHover(){
 	var imageWidth = $(this).find('.thumbnail').css('width');
 	var imageHover = $(this).find('.book_hover');
 	imageHover.css('width', imageWidth);
-	imageHover.css('display', 'block');
+	imageHover.css('display', 'block').hide().fadeIn();
 }
 
 function hideImageHover(){

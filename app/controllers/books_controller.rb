@@ -7,7 +7,14 @@ class BooksController < ApplicationController
 
   def get_more
     offset_by = params[:offset].to_i
-    @books = Book.offset(offset_by).limit(30).order(title: :asc)
+    if params[:tag]
+      puts '-----if route----------------'
+      tagBooks = Tag.find(params[:tag]).books
+      @books = tagBooks.offset(offset_by).limit(30).order(title: :asc)
+    else
+      puts '--- else route ---------------'
+      @books = Book.offset(offset_by).limit(30).order(title: :asc) 
+    end
     render json: @books.to_json(include: [:tags])
   end
 

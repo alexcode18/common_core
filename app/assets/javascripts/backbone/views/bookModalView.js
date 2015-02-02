@@ -19,10 +19,10 @@
 		this.renderBook();
 	},
 	hide: function() {
-		this.$el.parent().css('display', 'none');
+		this.$el.parent().fadeOut().css('display', 'none');
 	},
 	show: function() {
-		this.$el.parent().css('display', 'block');
+		this.$el.parent().css('display', 'block').fadeIn();
 	},
 	prevBook: function() {
 		if (App.books.get(this.model.toJSON().id - 1)) {
