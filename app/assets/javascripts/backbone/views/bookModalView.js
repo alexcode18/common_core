@@ -25,15 +25,27 @@
 		this.$el.parent().css('display', 'block').fadeIn();
 	},
 	prevBook: function() {
-		if (App.books.get(this.model.toJSON().id - 1)) {
-			this.model = App.books.get(this.model.toJSON().id - 1);
-			this.renderBook();
-		}
+		var prevID = $('#' + this.model.toJSON().id).prev().attr('id');
+		console.log(prevID);
+		// if (prevID != undefined){
+		// } else {
+		// 	prevID = $('#' + prevID).prev().attr('id');
+		// }
+
+		this.model = App.books.get(prevID);
+		this.renderBook();
 	},
 	nextBook: function() {
-		if (App.books.get(this.model.toJSON().id + 1)) {	
-			this.model = App.books.get(this.model.toJSON().id + 1);
-			this.renderBook();
-		}
+		var nextID = $('#' + this.model.toJSON().id).next().attr('id');
+		console.log(nextID);
+
+		// if (nextID != undefined) {	
+			
+		// } else {
+		// 	nextID = $('#' + nextID).next().attr('id');
+		// }
+		this.model = App.books.get(nextID);
+		this.renderBook();
+		
 	}
 });
