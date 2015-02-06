@@ -5,9 +5,9 @@ App.Routers.Router = Backbone.Router.extend({
 	},
 	routes: {
 		'':'index',
-		'books/:id/modal':'modalView'
+		'books/:id':'modalView'
 	},
-	modalView: function() {
+	modalView: function(id) {
 		App.modal.renderBook({
 			success: function() {
 				$('#' + id).find('#popup_book');

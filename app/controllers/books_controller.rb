@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   
   def index
-    @books = Book.limit(30).order(title: :asc)
+    @books = Book.all.order(title: :asc)
   	render json: @books.to_json(include: [:tags])
   end
 

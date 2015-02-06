@@ -51,11 +51,13 @@ $(function() {
 	$('body').on('mousedown', '#open_menu', displayTagMenu);
 	$('body').on('mousedown', 'h1', refreshPage);
 
-	$(window).scroll(function() {
-		if ($(window).scrollTop() == $(document).height() - $(window).height()){
-    	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
-    }
-	});
+	//Infinite scroll feature was causing the tagged book modals to break, 
+	//because not all the book information was grabbed from the backend yet.
+	// $(window).scroll(function() {
+	// 	if ($(window).scrollTop() == $(document).height() - $(window).height()){
+ //    	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
+ //    }
+	// });
 });
 
 function refreshPage(){
@@ -85,9 +87,9 @@ function displayTagMenu(){
 		duration: 800,
 		complete: function(){
 			if ($('#tags_list').css('display') == 'none') {
-				$('#open_menu').text('show more');	
+				$('#open_text').text('Grades + Categories').hide().fadeIn(800);	
 			} else {
-				$('#open_menu').text('hide');
+				$('#open_text').text('hide').hide().fadeIn(800);
 			}
 		}
 	});

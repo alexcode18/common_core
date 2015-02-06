@@ -12,10 +12,12 @@ App.Views.TagView = Backbone.View.extend({
 		this.$el.html(this.template(this.model.toJSON()));
 	},
 	getTagBooks: function() {
+		App.bookModalView.hide();
+		console.log(this.model);
 		App.tagID = this.model.get('id');
-		pickedBooks = this.model.toJSON().books;
 		var books = new App.Collections.BookCollection();
 		books.add(this.model.get('books'));
+		console.log('tag books: ' + books);
 		App.booksListView = new App.Views.BooksListView({collection: books});
 	}
 })
