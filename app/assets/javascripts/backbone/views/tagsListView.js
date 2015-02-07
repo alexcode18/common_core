@@ -16,11 +16,4 @@ App.Views.TagsListView = Backbone.View.extend({
 			this.$el.find('#categories').append(tagModel.$el);
 		}
 	}
-	// renderModalTags: function() {
-	// 	this.collection.each(this.getModalTag, this);
-	// },
-	// getModalTag: function(tag) {
-	// 	var tagModel = new App.Views.TagView({model: tag});
-	// 	$('.tags_container').append(tagModel.$el);
-	// }
 });
