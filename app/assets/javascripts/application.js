@@ -32,16 +32,37 @@ var App = {
 
 
 $(function() {
+	
 	App.starterOffset = 30;
-	App.books = new App.Collections.BookCollection();
-	App.booksListView = new App.Views.BooksListView({collection: App.books});
-	App.books.fetch({reset: true});
-	App.tags = new App.Collections.TagCollection();
-	console.log(App.books);
 
+	App.tags = new App.Collections.TagCollection();
+			//The tags can only be routed after the router variable has been set.
+	App.tags.fetch({
+		reset: true,
+		success: function() {
+			console.log('finished loading tags');
+		}
+	});
 	App.tagsListView = new App.Views.TagsListView({collection: App.tags});
-	App.tags.fetch({reset: true});
 	App.tagID = undefined;
+
+	App.books = new App.Collections.BookCollection();
+	App.books.fetch({
+		reset: true,
+		//The router can only be called after all the books have been fetched
+		success: function() {
+			console.log('finished loading books');
+			App.router = new App.Routers.Router();
+			Backbone.history.start();
+			App.router.on('route:modalView', function(id){
+				App.bookModalView.showBook(App.books.get(id));
+			});
+			App.router.on('route:tagView', function(id){
+				// App.tagsListView.renderTagList({collection: App.tags.get('id')});
+			});
+		}
+	});
+	App.booksListView = new App.Views.BooksListView({collection: App.books});
 
 	//This variable is mentioned in bookCollection.js and tagView.js
 	// It aligns with the limit used in the controller to setup how many books load at a time.
@@ -58,6 +79,16 @@ $(function() {
  //    	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
  //    }
 	// });
+
+	// App.router = new App.Routers.Router();
+
+	// self.on('route:modalView', function(id){
+	// 	console.log(App.books.get( id));
+	// 	App.bookModalView.showBook(App.books.get(id));
+	// });
+
+
+	
 });
 
 function refreshPage(){

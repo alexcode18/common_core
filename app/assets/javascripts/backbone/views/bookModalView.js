@@ -13,21 +13,23 @@
 	renderBook: function() {
 		this.$el.empty();
 		this.$el.html(this.template(this.model.toJSON()));
-		this.$el.find('book_info').hide().fadeIn();
+		this.$el.find('.book_info').hide().fadeIn();
 		
 		if (this.$el.parent().css('display') == 'block') {
 			// this.$el.html().hide().fadeIn(800);
 		} else {
 			this.show();
 		}
-		
+		App.router.navigate('books/' + this.model.toJSON().id);
 	},
 	showBook: function(model) {
 		this.model = model;
-		this.renderBook();
+		this.renderBook();	
 	},
 	hide: function() {
 		this.$el.parent().fadeOut();
+		App.router.navigate('index');
+		console.log(window.history);
 	},
 	show: function() {
 		this.$el.parent().css('display', 'block').hide().fadeIn();
@@ -35,18 +37,20 @@
 	prevBook: function() {
 		var prevID = $('#' + this.model.toJSON().id).prev().attr('id');
 		console.log(prevID);
-		if (prevID != undefined){
+
+		if (prevID != undefined) {
 			this.model = App.books.get(prevID);
 			this.renderBook();
 		}
 	},
 	nextBook: function() {
-		var nextID = $('#' + this.model.toJSON().id).next().attr('id');
+		console.log(this.model);
+		var nextID = $('#' + this.model.get('id')).next().attr('id');
 		console.log(nextID);
 
 		if (nextID != undefined) {
 			this.model = App.books.get(nextID);
-			this.renderBook();	
+			this.renderBook();
 		}
 	},
 	renderTagBooks: function(tag){
