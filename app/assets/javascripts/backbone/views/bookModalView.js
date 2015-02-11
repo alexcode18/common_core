@@ -15,16 +15,14 @@
 		this.$el.html(this.template(this.model.toJSON()));
 		this.$el.find('.book_info').hide().fadeIn();
 		
-		if (this.$el.parent().css('display') == 'block') {
-			// this.$el.html().hide().fadeIn(800);
-		} else {
+		if (this.$el.parent().css('display') != 'block') {
 			this.show();
 		}
 		App.router.navigate('books/' + this.model.toJSON().id);
 	},
 	showBook: function(model) {
 		this.model = model;
-		this.renderBook();	
+		this.renderBook();
 	},
 	hide: function() {
 		this.$el.parent().fadeOut();
@@ -36,23 +34,22 @@
 	},
 	prevBook: function() {
 		var prevID = $('#' + this.model.toJSON().id).prev().attr('id');
-		console.log(prevID);
 
-		if (prevID != undefined) {
+		if (prevID) {
 			this.model = App.books.get(prevID);
 			this.renderBook();
 		}
 	},
 	nextBook: function() {
-		console.log(this.model);
 		var nextID = $('#' + this.model.get('id')).next().attr('id');
-		console.log(nextID);
 
-		if (nextID != undefined) {
+		if (nextID) {
 			this.model = App.books.get(nextID);
 			this.renderBook();
 		}
 	},
+	// When a tag button is clicked, get the tag id # and find the associated tag. Then, create a TagView for that tag
+	// and call the function that grabs and sets the associated books on the list page. 
 	renderTagBooks: function(tag){
 		pickedTag = App.tags.get($(tag.currentTarget).attr('id'));
 		console.log(pickedTag);

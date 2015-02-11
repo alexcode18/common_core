@@ -30,13 +30,14 @@ body {
 	font-family: 'Raleway', Arial, sans-serif;
 	font-size: 12pt;
 	letter-spacing: 2px;
+	/*background: rgb(122, 204, 200);*/
 	background-image: url(http://www.sibagraphics.com/backs/images/wood/june0611.jpg);
 	/*background-repeat: no-repeat;*/
   background-attachment: fixed;
 }
 
 header {
-	background: #B62025;
+	background: rgb(122, 204, 200);
 	box-shadow: 0px 2px 8px black;
 	line-height:15px;
 	position: fixed;
@@ -44,7 +45,7 @@ header {
 	left: 0; 
 	z-index: 21;
 	width: 100%;
-	padding-top: 20px;
+	padding-top: 13px 20px;
 }
 
 header a {
@@ -54,16 +55,24 @@ header a {
 
 h1 {
 	text-transform: uppercase;
-	color: white;
+	color: black;
 	font-size: 30px;
-	text-shadow: 2px 2px 0px black;
+	/*text-shadow: 2px 2px 0px black;*/
 	letter-spacing: 5px;
 	width: 100%;
-	padding:20px 0px;
-	padding-top: 0;
-	text-align: center;
-	border-bottom: 1px solid white;
+	padding: 25px 0px;
 	cursor: pointer;
+}
+
+h1, h2 {
+	padding-left: 20px;
+}
+
+h2 {
+	color: black;
+	width: 60%;
+	line-height: 20px;
+	padding-bottom: 15px;
 }
 
 h3 {
@@ -100,13 +109,17 @@ p {
 
 #open_menu {
 	height: 20px;
-	border-top: 1px solid white;
+	border-top: 1px solid black;
 	background: #6D9D31;
 	padding-bottom: 5px;
 	padding-top: 10px;
 	text-align: center;
 	color: white;
 	cursor: pointer;
+}
+
+#open_menu:hover {
+	opacity: .8;
 }
 
 button {
@@ -140,7 +153,7 @@ button:hover {
 	top: 25%;
 	left: 15%;
 	right: 15%;
-	height: 320px;
+	/*height: 320px;*/
 	box-shadow: 0px 2px 8px black;
 }
 
@@ -160,7 +173,8 @@ button:hover {
 
 .arrow {
 	position: absolute;
-	top: 45%;
+	height: 100px;
+	top: 140px;
 }
 
 .prev_button {
@@ -175,6 +189,7 @@ button:hover {
 	position: absolute;
 	top: 0;
 	right: 0;
+	padding:10px 12px;
 }
 
 #container,
@@ -183,7 +198,7 @@ button:hover {
 }
 
 #container {
-	margin-top: 120px;
+	margin-top: 200px;
 }
 
 #columns {
@@ -247,11 +262,13 @@ button:hover {
 }
 
 #adams_logo {
-	padding: 5px;
+	padding: 10px;
+	padding-top: 20px;
 	position: fixed;
-	bottom: 20px;
-	right: 20px;
+	top: 0px;
+	right: 25px;
 	z-index: 23;
+	background: white;
 }
 
 #adams_logo a{

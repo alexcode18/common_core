@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   
   resources :books, except: [:new, :edit]
   get '/get_more',to: 'books#get_more'
+  get '/tag_books',to: 'books#tag_books'
   resources :tags, except: [:new, :edit]
-
+  
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -13,12 +13,10 @@ App.Views.TagView = Backbone.View.extend({
 	},
 	getTagBooks: function() {
 		App.bookModalView.hide();
-		console.log(this.model);
+		$('html, body').animate({ scrollTop: 0 }, 0);
 		App.tagID = this.model.get('id');
-		var books = new App.Collections.BookCollection();
-		books.add(this.model.get('books'));
-		console.log('tag books: ' + books);
-		App.booksListView = new App.Views.BooksListView({collection: books});
+		App.books = new App.Collections.BookCollection();
+		App.books.fetchTagBooks();
 		App.router.navigate('tags/' + App.tagID);
 	}
 })

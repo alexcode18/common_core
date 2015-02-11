@@ -70,15 +70,16 @@ $(function() {
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
 	$('body').on('mousedown', '#open_menu', displayTagMenu);
+	$('body').on('mouseleave', '#menu', displayTagMenu);
 	$('body').on('mousedown', 'h1', refreshPage);
-
+	$('body').on('mousedown', '#popup_bkgd', hideModal);
 	//Infinite scroll feature was causing the tagged book modals to break, 
 	//because not all the book information was grabbed from the backend yet.
-	// $(window).scroll(function() {
-	// 	if ($(window).scrollTop() == $(document).height() - $(window).height()){
- //    	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
- //    }
-	// });
+	$(window).scroll(function() {
+		if ($(window).scrollTop() == $(document).height() - $(window).height()){
+    	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
+    }
+	});
 
 	// App.router = new App.Routers.Router();
 
@@ -118,11 +119,15 @@ function displayTagMenu(){
 		duration: 800,
 		complete: function(){
 			if ($('#tags_list').css('display') == 'none') {
-				$('#open_text').text('Grades + Categories').hide().fadeIn(800);	
+				$('#open_text').text('Select Grades/Topics').hide().fadeIn(800);	
 			} else {
-				$('#open_text').text('hide').hide().fadeIn(800);
+				$('#open_text').text('Hide').hide().fadeIn(800);
 			}
 		}
 	});
+}
+
+function hideModal() {
+	App.bookModalView.hide();
 }
 

@@ -5,6 +5,7 @@
   
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <title>Common Core Booklist</title>
 </head>
 <body>
 	<div id="popup">
@@ -15,19 +16,20 @@
 	</div>
 	<header>
 		<h1><a>The Common Core Booklist</a></h1>
+		<h2>A curated collection of books that align to Common Core standards and draw cross-curricular connections. Use the grade and topic filters to find books that fit the needs of your classroom and curriculum.</h2>
 		<div id="menu">
 			<ul id="tags_list">
 				<li id="grades">
 					<h5>grades:</h5><br>
 				</li>
 				<li id="categories">
-					<h5>categories:</h5><br>
+					<h5>topics:</h5><br>
 				</li>
 			</ul>
 		</div>
 		<div id="open_menu">
 			<div id="open_text">
-				show more
+				Select Grades/Topics
 			</div>
 		</div>
 	</header>
