@@ -45,6 +45,7 @@
 
 		if (nextID) {
 			this.model = App.books.get(nextID);
+			$('html, body').animate({scrollTop:$('#' + nextID).position().top}, 'slow');
 			this.renderBook();
 		}
 	},

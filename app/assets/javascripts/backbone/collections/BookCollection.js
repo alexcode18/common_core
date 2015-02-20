@@ -8,12 +8,12 @@ App.Collections.BookCollection = Backbone.Collection.extend({
 	fetchMoreBooks: function() {
 		this.fetch({
 			//tells it not to replace the data that's already in there but add to it.
-			remove: false, 
+			remove: false,
 			url: '/get_more',
 			data: {offset: App.offset,
 								tag: App.tagID},
 			success: _.bind(function(e){
-        App.offset += App.starterOffset;
+        App.offset += 1;
       }, this)    
 		});	
 	},

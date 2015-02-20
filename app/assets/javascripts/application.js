@@ -33,7 +33,7 @@ var App = {
 
 $(function() {
 	
-	App.starterOffset = 30;
+	App.starterOffset = 50;
 
 	App.tags = new App.Collections.TagCollection();
 			//The tags can only be routed after the router variable has been set.
@@ -58,7 +58,7 @@ $(function() {
 				App.bookModalView.showBook(App.books.get(id));
 			});
 			App.router.on('route:tagView', function(id){
-				// App.tagsListView.renderTagList({collection: App.tags.get('id')});
+
 			});
 		}
 	});
@@ -76,19 +76,10 @@ $(function() {
 	//Infinite scroll feature was causing the tagged book modals to break, 
 	//because not all the book information was grabbed from the backend yet.
 	$(window).scroll(function() {
-		if ($(window).scrollTop() == $(document).height() - $(window).height()){
+		if ($(window).scrollTop() > $('body').height() / 2){
     	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
     }
 	});
-
-	// App.router = new App.Routers.Router();
-
-	// self.on('route:modalView', function(id){
-	// 	console.log(App.books.get( id));
-	// 	App.bookModalView.showBook(App.books.get(id));
-	// });
-
-
 	
 });
 

@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   
   def index
-    @books = Book.limit(30).order(title: :asc)
+    @books = Book.limit(50).order(title: :asc)
   	render json: @books.to_json(include: [:tags])
   end
 
@@ -10,17 +10,17 @@ class BooksController < ApplicationController
     # if there's a tag param then find the next limit of tagged books
     if params[:tag]
       tag_books = Tag.find(params[:tag]).books
-      @books = tag_books.offset(offset_by).limit(30).order(title: :asc)
+      @books = tag_books.offset(offset_by).limit(1).order(title: :asc)
     else
       puts '--- else route ---------------'
-      @books = Book.offset(offset_by).limit(30).order(title: :asc) 
+      @books = Book.offset(offset_by).limit(1).order(title: :asc) 
     end
     render json: @books.to_json(include: [:tags])
   end
 
   # 
   def tag_books
-    @tag_books = Tag.find(params[:tag]).books.limit(30).order(title: :asc)
+    @tag_books = Tag.find(params[:tag]).books.limit(10).order(title: :asc)
     render json: @tag_books.to_json(include: [:tags])
   end
 
