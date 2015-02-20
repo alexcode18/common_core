@@ -15,7 +15,7 @@
  */
 
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,600,700);
-
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif);
 
 .clearfix:after {
 	visibility: hidden;
@@ -30,9 +30,7 @@ body {
 	font-family: 'Raleway', Arial, sans-serif;
 	font-size: 12pt;
 	letter-spacing: 2px;
-	/*background: rgb(122, 204, 200);*/
 	background-image: url(http://www.sibagraphics.com/backs/images/wood/june0611.jpg);
-	/*background-repeat: no-repeat;*/
   background-attachment: fixed;
 }
 
@@ -62,7 +60,6 @@ h1 {
 	text-transform: uppercase;
 	color: black;
 	font-size: 30px;
-	/*text-shadow: 2px 2px 0px black;*/
 	letter-spacing: 5px;
 	width: 100%;
 	padding: 25px 0px;
@@ -82,7 +79,7 @@ h2 {
 
 h3 {
 	padding-top: 10px;
-	font-size: 16pt;
+	font-size: 15pt;
 	line-height: 25px;
 }
 
@@ -96,7 +93,7 @@ h3, h4 {
 }
 
 p {
-	padding: 5px;
+	padding: 10px;
 }
 
 #menu {
@@ -129,23 +126,29 @@ p {
 
 button,
 #buy_button {
-	background: none;
+	/*background: rgb(122, 204, 200);*/
 	border: none;
 	letter-spacing: 2px;
-	font-size: 13px;
-	box-shadow: 2px 2px 0px black;
+	font-size: 14px;
+	color: black;
+	border: 1px solid #6D9D31;
+	border-radius: 6px;
+	-o-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	/*box-shadow: 2px 2px 0px grey;*/
 	background: white;
-	font-weight: bold;
-	padding: 3px 9px;
-	margin: 2px;
-	border: 1px solid black;
+	/*font-weight: bold;*/
+	padding: 5px 9px;
+	margin: 4px;
+	/*border: 1px solid black;*/
 }
 
 #buy_button:hover,
 button:hover {
-	box-shadow: 1px 1px 0px black;
-	border: 1px solid #B62025;
-	color: #B62025;
+	background: rgb(122, 204, 200);
+	color: white;
+	border: 1px solid rgb(122, 204, 200);
 }
 
 /* z-index can only be applied to an element that's absolutely positioned */
@@ -158,10 +161,17 @@ button:hover {
 #popup_book {
 	background: white;
 	top: 25%;
-	left: 15%;
-	right: 15%;
-	/*height: 320px;*/
+	left: 10%;
+	right: 10%;
+}
+
+#popup_book,
+.close_button {
 	box-shadow: 0px 2px 8px black;
+}
+
+#popup_book h3{
+	color: #6D9D31;
 }
 
 #popup_book,
@@ -178,25 +188,48 @@ button:hover {
 	opacity: 0.6;
 }
 
+#book_description {
+	font-family: 'Droid Serif', serif;
+	letter-spacing: 1px;
+	line-height: 22px;
+	text-indent: 20px;
+}
+
+#buy_button {
+	margin: 20px 0;
+	float: right;
+	text-transform: uppercase;
+	background: #6D9D31;
+	color: white;
+}
+
 .arrow {
+	border: none;
+	border-radius: 0;
+	-o-border-radius: 0;
+	-moz-border-radius: 0;
+	-webkit-border-radius: 0;
 	position: absolute;
-	height: 100px;
-	top: 140px;
+	height: 100%;
+	top: -4px;
 }
 
 .prev_button {
-	left: -40px;
+	left: -4px;
+	border-right: 1px solid lightgrey;
 }
 
 .next_button {
-	right: -40px;
+	right: -4px;
+	border-left: 1px solid lightgrey;
 }
 
 .close_button {
 	position: absolute;
 	top: 0;
-	right: 0;
+	right: -50px;
 	padding:10px 12px;
+	border: none;
 }
 
 #container {
@@ -210,8 +243,8 @@ button:hover {
 	float:left;
   position:relative;
   left:-50%;
-  /*width: 100%;
-	padding: 20px;*/
+  width: 100%;
+	padding: 20px;
 }
 
 .post_box {
@@ -239,8 +272,7 @@ button:hover {
 
 .modal_book_cover {
 	height: 300px;
-	padding: 10px;
-	padding-right: 20px;
+	padding: 20px 40px;
 }
 
 .modal_pic_div {
@@ -248,7 +280,7 @@ button:hover {
 }
 
 .book_info {
-	padding:20px;
+	padding:40px;
 }
 
 .book_hover {
