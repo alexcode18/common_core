@@ -8,7 +8,8 @@ App.Views.BookPreviewView = Backbone.View.extend({
 		this.render();
 	},
 	events: {
-		'click': 'showBookInModal'
+		'click': 'showBookInModal',
+		'tap': 'showBookInModal'
 	},
 	render: function() {
 		this.$el.html(this.template(this.model.toJSON()));
