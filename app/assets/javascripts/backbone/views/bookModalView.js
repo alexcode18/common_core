@@ -31,7 +31,6 @@
 		console.log(window.history);
 	},
 	show: function() {
-		debugger
 		this.$el.parent().css('display', 'block').hide().fadeIn();
 	},
 	prevBook: function() {
