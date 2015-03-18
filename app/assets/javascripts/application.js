@@ -55,7 +55,7 @@ $(function() {
 			App.router = new App.Routers.Router();
 			Backbone.history.start();
 			App.router.on('route:modalView', function(id){
-				App.bookModalView.showBook(App.books.get(id));
+				// App.bookModalView.showBook(App.books.get(id));
 			});
 			App.router.on('route:tagView', function(id){
 

@@ -2,6 +2,7 @@
 	el: '#popup_book',
 	initialize: function(){
 		this.template = HandlebarsTemplates['bookModal'];
+
 	},
 	events: {
 		'click .prev_button': 'prevBook',
@@ -30,11 +31,11 @@
 		console.log(window.history);
 	},
 	show: function() {
+		debugger
 		this.$el.parent().css('display', 'block').hide().fadeIn();
 	},
 	prevBook: function() {
 		var prevID = $('#' + this.model.toJSON().id).prev().attr('id');
-
 		if (prevID) {
 			this.model = App.books.get(prevID);
 			this.renderBook();

@@ -7,10 +7,15 @@ App.Routers.Router = Backbone.Router.extend({
 		'tags/:id':'tagView'
 	},
 	index: function() {
+		console.log('index');
 	},
 	modalView: function(id) {
 		console.log(id);
-		App.bookModalView.showBook(App.books.get(id));
+		App.bookModalViewReloaded = new App.Views.BookModalView();
+		App.bookModalViewReloaded.showBook(App.books.get(id));
+		// App.bookModalView.renderBook({App.books.get(id)});
+		console.log('router modal view');
+		console.log(App.books.get(id));
 	},
 	tagView: function(id) {
 		console.log('made it to tagView router: ' + App.tags.get(id));
