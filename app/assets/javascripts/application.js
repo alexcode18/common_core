@@ -89,6 +89,7 @@ function refreshPage(){
 	App.books = new App.Collections.BookCollection();
 	App.booksListView = new App.Views.BooksListView({collection: App.books});
 	App.books.fetch({reset: true});
+	App.router.navigate('index');
 	// App.booksListView = new App.Views.BooksListView({collection: App.books});
 	// App.books.fetch({reset: true});
 }

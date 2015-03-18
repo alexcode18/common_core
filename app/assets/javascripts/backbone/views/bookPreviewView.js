@@ -16,7 +16,6 @@ App.Views.BookPreviewView = Backbone.View.extend({
 		this.$el.attr('id', this.model.toJSON().id);
 	},
 	showBookInModal: function() {
-		console.log('telling modal view to render');
 		App.bookModalView.showBook(this.model);
 	}
 });
