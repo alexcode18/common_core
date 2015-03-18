@@ -67,6 +67,12 @@ $(function() {
 	//This variable is mentioned in bookCollection.js and tagView.js
 	// It aligns with the limit used in the controller to setup how many books load at a time.
 	App.bookModalView = new App.Views.BookModalView();
+	$('window').on('back', function(){
+		window.history.back();
+	});
+	$('window').on('forward', function(){
+		window.history.forward();
+	});
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
 	$('body').on('mousedown', '#open_menu', displayTagMenu);
