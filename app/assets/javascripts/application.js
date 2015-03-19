@@ -32,47 +32,79 @@ var App = {
 
 
 $(function() {
-	App.books = new App.Collections.BookCollection();
-	App.booksListView = new App.Views.BooksListView({collection: App.books});
-	App.books.fetch({reset: true});
+	
+	App.starterOffset = 50;
+
 	App.tags = new App.Collections.TagCollection();
-	console.log(App.books);
-
+			//The tags can only be routed after the router variable has been set.
+	App.tags.fetch({
+		reset: true,
+		success: function() {
+			console.log('finished loading tags');
+		}
+	});
 	App.tagsListView = new App.Views.TagsListView({collection: App.tags});
-	App.tags.fetch({reset: true});
+	App.tagID = undefined;
 
-	console.log('App.books' + App.books);
-	console.log(App.booksListView);
+	App.books = new App.Collections.BookCollection();
+	App.books.fetch({
+		reset: true,
+		//The router can only be called after all the books have been fetched
+		success: function() {
+			console.log('finished loading books');
+			App.router = new App.Routers.Router();
+			Backbone.history.start();
+			App.router.on('route:modalView', function(id){
+				App.bookModalView.showBook(App.books.get(id));
+			});
+			App.router.on('route:tagView', function(id){
+
+			});
+		}
+	});
+	App.booksListView = new App.Views.BooksListView({collection: App.books});
+
+	//This variable is mentioned in bookCollection.js and tagView.js
+	// It aligns with the limit used in the controller to setup how many books load at a time.
 	App.bookModalView = new App.Views.BookModalView();
+	$('window').on('back', function(){
+		window.history.back();
+	});
+	$('window').on('forward', function(){
+		window.history.forward();
+	});
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
 	$('body').on('mousedown', '#open_menu', displayTagMenu);
+	$('body').on('mouseleave', '#menu', displayTagMenu);
 	$('body').on('mousedown', 'h1', refreshPage);
-	// $(window).on('scroll', '#open_menu', displayTagMenu);
-
-	// $(window).scroll(function() {
-	// 	if ($(window).scrollTop() == $(document).height() - $(window).height()){
- //    	console.log('trying to see how many times this runs');
- //    	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
- //    }
-	// });
+	$('body').on('mousedown', '#popup_bkgd', hideModal);
+	//Infinite scroll feature was causing the tagged book modals to break, 
+	//because not all the book information was grabbed from the backend yet.
+	$(window).scroll(function() {
+		if ($(window).scrollTop() > $('body').height() / 2){
+    	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
+    }
+	});
+	
 });
 
 function refreshPage(){
-	console.log('refreshPage');
+	App.tagID = undefined;
+	App.offset = App.starterOffset;
 	App.books = new App.Collections.BookCollection();
 	App.booksListView = new App.Views.BooksListView({collection: App.books});
 	App.books.fetch({reset: true});
+	App.router.navigate('index');
 	// App.booksListView = new App.Views.BooksListView({collection: App.books});
 	// App.books.fetch({reset: true});
 }
 
 function renderImageHover(){
-	console.log('should be rendering HoverHeight');
-	var imageHeight = $(this).find('.thumbnail').css('height');
+	var imageWidth = $(this).find('.thumbnail').css('width');
 	var imageHover = $(this).find('.book_hover');
-	imageHover.css('height', imageHeight);
-	imageHover.css('display', 'block');
+	imageHover.css('width', imageWidth);
+	imageHover.css('display', 'block').hide().fadeIn();
 }
 
 function hideImageHover(){
@@ -85,11 +117,15 @@ function displayTagMenu(){
 		duration: 800,
 		complete: function(){
 			if ($('#tags_list').css('display') == 'none') {
-				$('#open_menu').text('show more');	
+				$('#open_text').text('Select Grades/Topics').hide().fadeIn(800);	
 			} else {
-				$('#open_menu').text('hide');
+				$('#open_text').text('Hide').hide().fadeIn(800);
 			}
 		}
 	});
+}
+
+function hideModal() {
+	App.bookModalView.hide();
 }
 
