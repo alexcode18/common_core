@@ -7,7 +7,13 @@
 	<div class="modal_item book_info">
 		<h3>{{title}}</h3>
 		<h4 class="author modal_p">{{author}}</h4>
+<<<<<<< HEAD
 		<p class="clearfix">{{description}}</p>
+=======
+		<p>ISBN: {{isbn}}</p>
+		<p class="clearfix" id="book_description">{{description}}</p>
+		<a type="button" href="http://www.adamsbook.com/details.aspx?isbn={{isbn}}" target="_blank" id="buy_button">View Pricing &amp; More Info</a>
+>>>>>>> button_link_changes
 		<div class="tags_container">
 			{{#each tags}}
 		    <button class="tag" data-id="{{id}}">{{name}}</button>

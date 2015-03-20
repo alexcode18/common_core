@@ -23,7 +23,11 @@
 		this.renderBook();
 	},
 	hide: function() {
+<<<<<<< HEAD
 		this.$el.parent().css('display', 'none');
+=======
+		this.$el.parent().fadeOut();
+>>>>>>> button_link_changes
 	},
 	show: function() {
 		this.$el.parent().css('display', 'block');
