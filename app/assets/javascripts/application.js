@@ -32,7 +32,7 @@ var App = {
 
 
 $(function() {
-	
+	App.router = new App.Routers.Router();
 	App.starterOffset = 50;
 
 	App.tags = new App.Collections.TagCollection();
@@ -52,8 +52,6 @@ $(function() {
 		//The router can only be called after all the books have been fetched
 		success: function() {
 			console.log('finished loading books');
-			App.router = new App.Routers.Router();
-			Backbone.history.start();
 			App.router.on('route:modalView', function(id){
 				App.bookModalView.showBook(App.books.get(id));
 			});
@@ -67,12 +65,7 @@ $(function() {
 	//This variable is mentioned in bookCollection.js and tagView.js
 	// It aligns with the limit used in the controller to setup how many books load at a time.
 	App.bookModalView = new App.Views.BookModalView();
-	$('window').on('back', function(){
-		window.history.back();
-	});
-	$('window').on('forward', function(){
-		window.history.forward();
-	});
+
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
 	$('body').on('mousedown', '#open_menu', displayTagMenu);
@@ -86,7 +79,8 @@ $(function() {
     	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
     }
 	});
-	
+
+	Backbone.history.start();
 });
 
 function refreshPage(){
@@ -95,7 +89,8 @@ function refreshPage(){
 	App.books = new App.Collections.BookCollection();
 	App.booksListView = new App.Views.BooksListView({collection: App.books});
 	App.books.fetch({reset: true});
-	App.router.navigate('index');
+	App.router.navigate('');
+	App.bookModalView.hide();
 	// App.booksListView = new App.Views.BooksListView({collection: App.books});
 	// App.books.fetch({reset: true});
 }

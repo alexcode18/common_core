@@ -27,8 +27,6 @@
 	},
 	hide: function() {
 		this.$el.parent().fadeOut();
-		App.router.navigate('index');
-		console.log(window.history);
 	},
 	show: function() {
 		this.$el.parent().css('display', 'block').hide().fadeIn();
