@@ -72,6 +72,27 @@ $(function() {
 	$('body').on('mouseleave', '#menu', displayTagMenu);
 	$('body').on('mousedown', 'h1', refreshPage);
 	$('body').on('mousedown', '#popup_bkgd', hideModal);
+	
+	window.onpopstate = function(event) {    
+    if(history.state) {
+      location.reload(); 
+    }
+	}
+
+	// window.onhashchange = function() {
+ //    if (window.innerDocClick) {
+ //        window.innerDocClick = false;
+ //    } else {
+ //        if (window.location.hash != '#undefined') {
+ //            goBack();
+ //        } else {
+ //            history.pushState("", document.title, window.location.pathname);
+ //            location.reload();
+ //        }
+ //    }
+	// }
+
+
 	//Infinite scroll feature was causing the tagged book modals to break, 
 	//because not all the book information was grabbed from the backend yet.
 	$(window).scroll(function() {
@@ -79,10 +100,12 @@ $(function() {
     	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
     }
 	});
-
-	Backbone.history.start();
+	//it is key to set the pushState to true so 
+	//that the history acknowledges backbone route changes.
+	Backbone.history.start({pushState: false});
 });
 
+//reverts page to initial index
 function refreshPage(){
 	App.tagID = undefined;
 	App.offset = App.starterOffset;
@@ -91,10 +114,9 @@ function refreshPage(){
 	App.books.fetch({reset: true});
 	App.router.navigate('');
 	App.bookModalView.hide();
-	// App.booksListView = new App.Views.BooksListView({collection: App.books});
-	// App.books.fetch({reset: true});
 }
 
+//shows pop-up over index books
 function renderImageHover(){
 	var imageWidth = $(this).find('.thumbnail').css('width');
 	var imageHover = $(this).find('.book_hover');
@@ -102,11 +124,13 @@ function renderImageHover(){
 	imageHover.css('display', 'block').hide().fadeIn();
 }
 
+//removes hover from index books
 function hideImageHover(){
 	var imageHover = $(this).find('.book_hover');
 	imageHover.css('display', 'none');
 }
 
+//allows the top menu to unfold.
 function displayTagMenu(){
 	$('#tags_list').slideToggle({
 		duration: 800,

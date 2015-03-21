@@ -20,13 +20,14 @@ class BooksController < ApplicationController
 
   # 
   def tag_books
-    @tag_books = Tag.find(params[:tag]).books.limit(10).order(title: :asc)
+    @tag_books = Tag.find(params[:tag]).books.limit(50).order(title: :asc)
     render json: @tag_books.to_json(include: [:tags])
   end
 
   def show
-    tag_books = Tag.find(params[:tag]).books
-    render json: tag_books.to_json(include: [:tags])
+    book = Book.find(params[:id])
+    # tag_books = Tag.find(params[:tag]).books
+    render json: book.to_json(include: [:tags])
   end
 
   private
