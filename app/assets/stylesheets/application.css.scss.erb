@@ -56,6 +56,44 @@ header a {
 	color: white;
 }
 
+#adams_header {
+	background: white;
+	padding: 7px 20px 5px;
+}
+
+#adams_header a{
+	text-decoration: none;
+	color: black;
+}
+
+#adams_header ul{
+	float: right;
+	margin-left: 7%;
+}
+
+#adams_header li {
+	line-height: 18px;
+}
+
+#adams_header li:nth-child(2){
+	font-size: 10pt;
+}
+
+#adams_logo {
+	float: left;
+}
+
+#adams_logo img{
+	width: 150px;
+}
+
+#adams_logo p{
+	margin-top: -5px;
+	margin-left: -19px;
+	padding: 0 5px;
+	font-size: 8pt;
+}
+
 h1 {
 	text-transform: uppercase;
 	color: black;
@@ -73,9 +111,9 @@ h1, h2 {
 
 h2 {
 	color: black;
-	width: 100%;
 	line-height: 20px;
 	padding-bottom: 15px;
+	padding-right: 20px;
 }
 
 h3 {
@@ -161,7 +199,7 @@ button:hover {
 
 #popup_book {
 	background: white;
-	top: 25%;
+	top: 28%;
 	left: 10%;
 	right: 10%;
 }
@@ -304,37 +342,6 @@ button:hover {
 	color: #2289E3;
 }
 
-#adams_header {
-	background: white;
-	padding: 8px 20px;
-}
-
-#adams_header a{
-	text-decoration: none;
-	color: black;
-}
-
-#adams_header ul{
-	float: right;
-	margin-left: 7%;
-}
-
-#adams_header li {
-	line-height: 18px;
-}
-
-#adams_header li:nth-child(2){
-	font-size: 10pt;
-}
-
-#adams_logo {
-	float: left;
-}
-
-#adams_logo img{
-	width: 150px;
-}
-
 footer {
 	background: white;
 	box-shadow: 0px 2px 8px black;
@@ -366,6 +373,14 @@ footer li:last-child img{
 	footer,
 	h2 {
 		display: none;
+	}
+
+	#adams_logo p {
+		display: none;
+	}
+
+	#popup_book {
+		top: 23%;
 	}
 
 }

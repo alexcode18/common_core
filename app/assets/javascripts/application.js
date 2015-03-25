@@ -50,7 +50,7 @@ $(function() {
 	App.books.fetch({
 		reset: true,
 		//The router can only be called after all the books have been fetched
-		success: function() {
+		success: function(){
 			console.log('finished loading books');
 			App.router.on('route:modalView', function(id){
 				App.bookModalView.showBook(App.books.get(id));
@@ -73,29 +73,15 @@ $(function() {
 	$('body').on('mousedown', 'h1', refreshPage);
 	$('body').on('mousedown', '#popup_bkgd', hideModal);
 	
-	window.onpopstate = function(event) {    
+	window.onpopstate = function(event){    
     if(history.state) {
       location.reload(); 
     }
 	}
 
-	// window.onhashchange = function() {
- //    if (window.innerDocClick) {
- //        window.innerDocClick = false;
- //    } else {
- //        if (window.location.hash != '#undefined') {
- //            goBack();
- //        } else {
- //            history.pushState("", document.title, window.location.pathname);
- //            location.reload();
- //        }
- //    }
-	// }
-
-
 	//Infinite scroll feature was causing the tagged book modals to break, 
 	//because not all the book information was grabbed from the backend yet.
-	$(window).scroll(function() {
+	$(window).scroll(function(){
 		if ($(window).scrollTop() > $('body').height() / 2){
     	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
     }
@@ -144,7 +130,7 @@ function displayTagMenu(){
 	});
 }
 
-function hideModal() {
+function hideModal(){
 	App.bookModalView.hide();
 }
 
