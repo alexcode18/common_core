@@ -18,6 +18,5 @@ App.Views.TagView = Backbone.View.extend({
 		var books = new App.Collections.BookCollection();
 		books.add(this.model.get('books'));
 		App.booksListView = new App.Views.BooksListView({collection: books});
-		// pickedBooks.fetch({reset: true});
 	}
 })
