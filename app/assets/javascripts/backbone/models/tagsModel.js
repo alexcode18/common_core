@@ -1,5 +1,5 @@
 App.Models.Tag = Backbone.Model.extend({
-	urlRoot: '/tags',
+	url: '/tags',
 	initialize: function(){
 		console.log('created New Tags Model.');
 	}

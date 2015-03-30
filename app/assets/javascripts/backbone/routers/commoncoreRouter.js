@@ -1,11 +1,20 @@
 App.Routers.Router = Backbone.Router.extend({
 	initialize: function() {
+		App.collection = new App.Collections.BookCollection();
+		App.modal = new App.Views.BookModalView();
 	},
 	routes: {
 		'':'index',
-		'books/:id':'modalView',
-		'tags/:id':'tagView'
+		'books/:id/modal':'modalView'
 	},
+<<<<<<< HEAD
+	modalView: function() {
+		App.modal.renderBook({
+			success: function() {
+				$('#' + id).find('#popup_book');
+			}
+		})
+=======
 	index: function() {
 		console.log('happy time');
 		App.tagID = undefined;
@@ -34,5 +43,6 @@ App.Routers.Router = Backbone.Router.extend({
 				newView.getTagBooks();
 			}
 		});
+>>>>>>> button_link_changes
 	}
 })

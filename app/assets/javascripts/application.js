@@ -32,6 +32,9 @@ var App = {
 
 
 $(function() {
+<<<<<<< HEAD
+	App.books = new App.Collections.BookCollection();
+=======
 	App.router = new App.Routers.Router();
 	App.starterOffset = 50;
 
@@ -60,17 +63,36 @@ $(function() {
 			});
 		}
 	});
+>>>>>>> button_link_changes
 	App.booksListView = new App.Views.BooksListView({collection: App.books});
+	App.books.fetch({reset: true});
+	App.tags = new App.Collections.TagCollection();
+	console.log(App.books);
 
-	//This variable is mentioned in bookCollection.js and tagView.js
-	// It aligns with the limit used in the controller to setup how many books load at a time.
+	App.tagsListView = new App.Views.TagsListView({collection: App.tags});
+	App.tags.fetch({reset: true});
+
+	console.log('App.books' + App.books);
+	console.log(App.booksListView);
 	App.bookModalView = new App.Views.BookModalView();
+<<<<<<< HEAD
+=======
 
+>>>>>>> button_link_changes
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
 	$('body').on('mousedown', '#open_menu', displayTagMenu);
-	$('body').on('mouseleave', '#menu', displayTagMenu);
 	$('body').on('mousedown', 'h1', refreshPage);
+<<<<<<< HEAD
+	// $(window).on('scroll', '#open_menu', displayTagMenu);
+
+	// $(window).scroll(function() {
+	// 	if ($(window).scrollTop() == $(document).height() - $(window).height()){
+ //    	console.log('trying to see how many times this runs');
+ //    	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
+ //    }
+	// });
+=======
 	$('body').on('mousedown', '#popup_bkgd', hideModal);
 	
 	window.onpopstate = function(event){    
@@ -86,28 +108,42 @@ $(function() {
     	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
     }
 	});
+<<<<<<< HEAD
 	//it is key to set the pushState to true so 
 	//that the history acknowledges backbone route changes.
 	Backbone.history.start({pushState: false});
+=======
+
+	Backbone.history.start();
+>>>>>>> button_link_changes
+>>>>>>> 584c33e7348811fdd35e0f54a17cb2e374bda9ba
 });
 
 //reverts page to initial index
 function refreshPage(){
-	App.tagID = undefined;
-	App.offset = App.starterOffset;
+	console.log('refreshPage');
 	App.books = new App.Collections.BookCollection();
 	App.booksListView = new App.Views.BooksListView({collection: App.books});
 	App.books.fetch({reset: true});
+<<<<<<< HEAD
+=======
 	App.router.navigate('');
 	App.bookModalView.hide();
+<<<<<<< HEAD
+=======
+>>>>>>> button_link_changes
+	// App.booksListView = new App.Views.BooksListView({collection: App.books});
+	// App.books.fetch({reset: true});
+>>>>>>> 584c33e7348811fdd35e0f54a17cb2e374bda9ba
 }
 
 //shows pop-up over index books
 function renderImageHover(){
-	var imageWidth = $(this).find('.thumbnail').css('width');
+	console.log('should be rendering HoverHeight');
+	var imageHeight = $(this).find('.thumbnail').css('height');
 	var imageHover = $(this).find('.book_hover');
-	imageHover.css('width', imageWidth);
-	imageHover.css('display', 'block').hide().fadeIn();
+	imageHover.css('height', imageHeight);
+	imageHover.css('display', 'block');
 }
 
 //removes hover from index books
@@ -122,15 +158,18 @@ function displayTagMenu(){
 		duration: 800,
 		complete: function(){
 			if ($('#tags_list').css('display') == 'none') {
-				$('#open_text').text('Select Grades/Topics').hide().fadeIn(800);	
+				$('#open_menu').text('show more');	
 			} else {
-				$('#open_text').text('Hide').hide().fadeIn(800);
+				$('#open_menu').text('hide');
 			}
 		}
 	});
 }
 
+<<<<<<< HEAD
 function hideModal(){
 	App.bookModalView.hide();
 }
 
+=======
+>>>>>>> 584c33e7348811fdd35e0f54a17cb2e374bda9ba
