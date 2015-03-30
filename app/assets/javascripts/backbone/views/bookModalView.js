@@ -23,20 +23,12 @@
 		this.renderBook();
 	},
 	hide: function() {
-<<<<<<< HEAD
-		this.$el.parent().css('display', 'none');
-=======
 		this.$el.parent().fadeOut();
-<<<<<<< HEAD
-
 		if (App.tagID) {
 			App.router.navigate('tags/' + App.tagID);
 		} else {
 			App.router.navigate('');
 		}	
-=======
->>>>>>> button_link_changes
->>>>>>> 584c33e7348811fdd35e0f54a17cb2e374bda9ba
 	},
 	show: function() {
 		this.$el.parent().css('display', 'block');
