@@ -1,24 +1,27 @@
- App.Views.BookModalView = Backbone.View.extend({
+App.Views.BookModalView = Backbone.View.extend({
 	el: '#popup_book',
 	initialize: function(){
-		
-		console.log('book modal view initialized')
 		this.template = HandlebarsTemplates['bookModal'];
+
 	},
 	events: {
 		'click .prev_button': 'prevBook',
 		'click .next_button': 'nextBook',
-		'click .close_button': 'hide' 
+		'click .close_button': 'hide',
+		'click #popup_bkgd': 'hide',
+		'click .tag':'renderTagBooks'
 	},
 	renderBook: function() {
 		this.$el.empty();
-		console.log(this.model.toJSON());
 		this.$el.html(this.template(this.model.toJSON()));
+		this.$el.find('.book_info').hide().fadeIn();
 		
-		this.show();
+		if (this.$el.parent().css('display') != 'block') {
+			this.show();
+		}
+		App.router.navigate('books/' + this.model.toJSON().id);
 	},
 	showBook: function(model) {
-		console.log('show book');
 		this.model = model;
 		this.renderBook();
 	},
@@ -28,21 +31,33 @@
 			App.router.navigate('tags/' + App.tagID);
 		} else {
 			App.router.navigate('');
-		}	
+		}
 	},
 	show: function() {
-		this.$el.parent().css('display', 'block');
+		this.$el.parent().css('display', 'block').hide().fadeIn();
 	},
 	prevBook: function() {
-		if (App.books.get(this.model.toJSON().id - 1)) {
-			this.model = App.books.get(this.model.toJSON().id - 1);
+		var prevID = $('#' + this.model.toJSON().id).prev().attr('id');
+		if (prevID) {
+			this.model = App.books.get(prevID);
 			this.renderBook();
 		}
 	},
 	nextBook: function() {
-		if (App.books.get(this.model.toJSON().id + 1)) {	
-			this.model = App.books.get(this.model.toJSON().id + 1);
+		var nextID = $('#' + this.model.get('id')).next().attr('id');
+
+		if (nextID) {
+			this.model = App.books.get(nextID);
+			$('html, body').animate({scrollTop:$('#' + nextID).position().top}, 'slow');
 			this.renderBook();
 		}
+	},
+	// When a tag button is clicked, get the tag id # and find the associated tag. Then, create a TagView for that tag
+	// and call the function that grabs and sets the associated books on the list page. 
+	renderTagBooks: function(tag){
+		pickedTag = App.tags.get($(tag.currentTarget).attr('id'));
+		console.log(pickedTag);
+		newTagList = new App.Views.TagView({model: pickedTag});
+		newTagList.getTagBooks();
 	}
 });

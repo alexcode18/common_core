@@ -13,11 +13,12 @@ App.Routers.Router = Backbone.Router.extend({
 		App.books = new App.Collections.BookCollection();
 		App.booksListView = new App.Views.BooksListView({collection: App.books});
 		App.books.fetch({reset: true});
+		Backbone.history.start();
 	},
 	modalView: function(id) {
-		console.log(id);
-		this.tagView(App.tagID);
-		App.books = new App.Collections.BookCollection();
+		// console.log(id);
+		// this.tagView(App.tagID);
+		// App.books = new App.Collections.BookCollection();
 		App.books.fetch({
 			success: function(){
 				App.bookModalView.showBook(App.books.get(id));

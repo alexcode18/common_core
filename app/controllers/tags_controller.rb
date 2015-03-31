@@ -1,8 +1,8 @@
 class TagsController < ApplicationController
   
   def index
-  	@tags = Tag.all
-  	render json: @tags.to_json(include: :books)
+    @tags = Tag.all
+    render json: @tags.to_json(include: [:books])
   end
 
   def show
@@ -10,24 +10,10 @@ class TagsController < ApplicationController
     render json: @tag.to_json(include: :books)
   end
 
-  def create
-  	@tag = Tag.create(tag_params)
-  	render json: @tag.to_json(include: :books)
-  end
-
-  def update
-  	@tag = Tag.update(params[:id], tag_params)
-  	render json: @tag
-  end
-
-  def destroy
-  	@tag = Tag.destroy(params[:id])
-  	render json: @tag
-  end
-
   private
 
   def tag_params
-  	params.require(:tag).permit(:name)
+    params.require(:tag).permit(:name)
   end
 end
+
