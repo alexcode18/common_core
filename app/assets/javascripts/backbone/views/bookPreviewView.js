@@ -1,6 +1,6 @@
 App.Views.BookPreviewView = Backbone.View.extend({
 	tagName: 'div',
-	className: 'post_box',
+	className: 'post_box grid-item',
 	initialize: function() {
 		this.template = HandlebarsTemplates['bookPreview'];
 		this.listenTo(this.model, 'change', this.render);

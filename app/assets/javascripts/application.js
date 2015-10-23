@@ -32,6 +32,14 @@ var App = {
 
 
 $(function() {
+
+	$('.grid').masonry({
+	  // options
+	  itemSelector: '.grid-item',
+	  columnWidth: 205,
+	  "gutter": 10
+	});
+
 	App.router = new App.Routers.Router();
 	App.starterOffset = 50;
 
