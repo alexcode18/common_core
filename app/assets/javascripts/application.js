@@ -33,15 +33,8 @@ var App = {
 
 $(function() {
 
-	$('.grid').masonry({
-	  // options
-	  itemSelector: '.grid-item',
-	  columnWidth: 205,
-	  "gutter": 10
-	});
-
 	App.router = new App.Routers.Router();
-	App.starterOffset = 50;
+	App.starterOffset = 100;
 
 	App.tags = new App.Collections.TagCollection();
 			//The tags can only be routed after the router variable has been set.
@@ -54,21 +47,6 @@ $(function() {
 	App.tagsListView = new App.Views.TagsListView({collection: App.tags});
 	App.tagID = undefined;
 
-	App.books = new App.Collections.BookCollection();
-	App.books.fetch({
-		reset: true,
-		//The router can only be called after all the books have been fetched
-		success: function() {
-			console.log('finished loading books');
-			App.router.on('route:modalView', function(id){
-				App.bookModalView.showBook(App.books.get(id));
-			});
-			App.router.on('route:tagView', function(id){
-
-			});
-		}
-	});
-	App.booksListView = new App.Views.BooksListView({collection: App.books});
 
 	//This variable is mentioned in bookCollection.js and tagView.js
 	// It aligns with the limit used in the controller to setup how many books load at a time.
@@ -77,10 +55,10 @@ $(function() {
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
 	$('body').on('mousedown', '#open_menu', displayTagMenu);
-	$('body').on('mouseleave', '#menu', displayTagMenu);
+	// $('body').on('mouseleave', '#menu', displayTagMenu);
 	$('body').on('mousedown', 'h1', refreshPage);
 	$('body').on('mousedown', '#popup_bkgd', hideModal);
-	//Infinite scroll feature was causing the tagged book modals to break, 
+	//Infinite scroll featurez was causing the tagged book modals to break, 
 	//because not all the book information was grabbed from the backend yet.
 	$(window).scroll(function() {
 		if ($(window).scrollTop() > $('body').height() / 2){
@@ -88,7 +66,63 @@ $(function() {
     }
 	});
 
-	Backbone.history.start();
+	// Backbone.history.start();
+
+	App.jPM = $.jPanelMenu({
+		menu: '.search-div',
+	    trigger: '#open-search',
+	    animated: true,
+	    duration: 300,
+	    direction: 'left',
+	    excludedPanelContent: '.search_div',
+	    openPosition: 250
+	});
+
+	App.jPM.on({
+		success: function() {
+			console.log('jpm on');
+		}
+	});
+
+	console.log('jpm on');
+});
+
+$(window).load( function() {
+
+	App.books = new App.Collections.BookCollection();
+	App.books.fetch({
+		reset: true,
+		//The router can only be called after all the books have been fetched
+		success: function() { 
+			console.log('finished loading books');
+
+			App.router.on('route:modalView', function(id){
+				App.bookModalView.showBook(App.books.get(id));
+			});
+			App.router.on('route:tagView', function(id){
+
+			});
+
+
+		}
+	});
+	// App.grid = $('.grid').masonry({
+	//   // options
+	//   itemSelector: '.grid-item',
+	//   columnWidth: '.grid-item',
+	//   "gutter": 20
+	//   // isFitWidth: true
+	// });
+	App.booksListView = new App.Views.BooksListView({
+		collection: App.books,
+		success: function(){
+			reorderGrid();
+		}
+	});
+	
+	
+
+	// $(window).on('resize', reorderGrid);
 });
 
 function refreshPage(){
@@ -104,7 +138,7 @@ function refreshPage(){
 }
 
 function renderImageHover(){
-	var imageWidth = $(this).find('.thumbnail').css('width');
+	var imageWidth = $(this).find('.post-box').css('width');
 	var imageHover = $(this).find('.book_hover');
 	imageHover.css('width', imageWidth);
 	imageHover.css('display', 'block').hide().fadeIn();
@@ -132,3 +166,12 @@ function hideModal() {
 	App.bookModalView.hide();
 }
 
+// function reorderGrid() {
+// 	$('.grid').masonry({
+// 	  // options
+// 	  itemSelector: '.grid-item',
+// 	  columnWidth: '.grid-item',
+// 	  "gutter": 20,
+// 	  isFitWidth: true
+// 	});
+// }

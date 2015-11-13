@@ -11,9 +11,9 @@ App.Collections.BookCollection = Backbone.Collection.extend({
 			remove: false,
 			url: '/get_more',
 			data: {offset: App.offset,
-								tag: App.tagID},
+			tag: App.tagID},
 			success: _.bind(function(e){
-        App.offset += 1;
+        App.offset += 30;
       }, this)    
 		});	
 	},

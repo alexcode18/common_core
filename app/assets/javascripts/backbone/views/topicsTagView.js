@@ -1,6 +1,6 @@
-App.Views.TagView = Backbone.View.extend({
+App.Views.TopicsTagView = Backbone.View.extend({
 	tagName: 'button',
-	className: 'tag',
+	className: 'tag col-lg-6 col-md-6 col-sm-6 col-xs-6',
 	initialize: function() {
 		this.template = HandlebarsTemplates['listTag'];
 		this.renderTag();
