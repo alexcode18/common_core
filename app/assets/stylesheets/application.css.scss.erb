@@ -26,24 +26,30 @@
 	height: 0;
 }
 
+html {
+	overflow-y: scroll;
+}
+
 body {
 	font-family: 'Raleway', Arial, sans-serif;
 	font-size: 12pt;
 	letter-spacing: 2px;
-	background-image: url(http://www.sibagraphics.com/backs/images/wood/june0611.jpg);
-  background-attachment: fixed;
+	background-attachment: fixed;
+}
+
+header .row {
+	/*position: fixed;
+	top: 0;
+	left: 0; 
+	z-index: 21;*/
+	width: 100%;
+	/*padding-top: 13px 20px;*/
+	margin: auto -15;
 }
 
 header {
 	background: rgb(122, 204, 200);
-	box-shadow: 0px 2px 8px black;
 	line-height:15px;
-	position: fixed;
-	top: 0;
-	left: 0; 
-	z-index: 21;
-	width: 100%;
-	padding-top: 13px 20px;
 }
 
 a {
@@ -94,7 +100,11 @@ header a {
 	padding: 0 5px;
 	font-size: 8pt;
 }
-
+.thumbnail {
+	/*width: 100%;*/
+	margin: 0 auto;
+	height: 260px;
+}
 h1 {
 	/*text-transform: uppercase;*/
 	color: black;
@@ -139,15 +149,31 @@ p {
 
 #menu {
 	width: 100%;
-	background: white/*#99161F*/;
+	background: lightblue;
+	overflow-x: scroll;
 }
 
 #tags_list {
-	display: none;
+	/*display: none;*/
+
 }
 
 #tags_list li{
 	padding: 10px 20px;
+}
+
+.tag {
+    background: none;
+    border: none;
+    border-radius: 0;
+    border-top: 1px solid black;
+}
+
+.tag:hover {
+	border: none;
+	border-top: 1px solid white;
+	background: white;
+	color: black;
 }
 
 #open_menu {
@@ -274,42 +300,49 @@ button:hover {
 }
 
 #container {
-	float:left;
-  position:relative;
+	/*float:left;
+  /*position:relative;*/
   /*left:50%;*/
   /*width: inherit;*/
-  margin: 200px auto 0;
+  background-image: url(http://www.sibagraphics.com/backs/images/wood/june0611.jpg);
 }
+/*
+.grid {
+	margin: 0 auto;
+	width: 100%;
+	margin-top: 20px;
+/*	max-width: 1200px;
+}*/
 
-#columns {
-	float:left;
-  position:relative;
-/*  left:-50%;*/
-  width: 100%;
-	padding: 20px;
-}
+/* clearfix */
+/*.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}*/
 
-.post_box {
-	background: white;
-	list-style:none;
-	box-shadow: 0px 2px 6px black;
-	display: inline-block;
+.post_box,
+.grid-item {
+	background: none;
+	/*box-shadow: 0px 2px 6px black;*/
+	/*display: inline-block;*/
 	overflow: hidden;
-	/*height: 300px;*/
-	float: left;
-	position: relative;
-	/*margin: 10px;*/
+	/*float: left;*/
+	/*position: relative;*/
 	border: 4px solid white;
 	cursor: pointer;
+	/*width: 204px;*/
+	/*height: 300px;*/
+	padding-top: 20px;
 }
 
-.thumbnail,
-.modal_book_cover {
-	height: 300px;
+#book_screen {
+	padding-top: 10px;
 }
 
-.thumbnail {
-	float: left;
+#book_screen .row {
+	margin-left: 0px;
+	margin-right: 0px;
 }
 
 .modal_book_cover {
@@ -328,17 +361,15 @@ button:hover {
 .book_hover {
 	display: none;
 	position: absolute;
+	top: 0;
+	left: -1px;
 	color: white;
 	z-index: 4;
 	background: rgba(109, 157, 49, 0.9);
-	max-height: 500px;
+	width: 100%;
+	height: 100%;
 	overflow: hidden;
 	padding: 20px 0px;
-}
-
-.grid-item { 
-	width: 200px; 
-	/*margin: 1%;*/
 }
 
 .book_hover h1 {
@@ -408,6 +439,14 @@ footer li:last-child img{
 	height: 25px;
 }
 
+/*.container {
+	overflow-x: scroll;
+	width: 100%;
+}*/
+
+
+
+
 @media only screen and (max-width : 995px) {
 
 	footer,
@@ -424,8 +463,7 @@ footer li:last-child img{
 
 @media only screen and (max-width : 580px) {
 	
-	header ul,
-	#open_menu {
+	header ul {
 		display: none;
 	}
 
@@ -444,15 +482,15 @@ footer li:last-child img{
 		padding-top: 0px;
 	}
 
-	#container {
+	/*#container {
   	margin-top: 120px;
   	float: none;
   	padding: 0;
-	}
+	}*/
 
-	#columns {
+	/*#columns {
 		padding: 0;
-	}
+	}*/
 
 	#popup {
 		z-index: 22;
@@ -491,16 +529,11 @@ footer li:last-child img{
 	}
 
 	.post_box {
-		display: block;
-		float: none;
-		width: 50%;
-		height: auto;
-		margin: 5px 25%;
-		padding: 0px;
-	}
-
-	.thumbnail {
-		width: 100%;
-		height: auto;
+		/*display: block;*/
+		/*float: none;*/
+		/*width: 50%;*/
+		/*height: auto;*/
+		/*margin: 5px 25%;*/
+		/*padding: 0px;*/
 	}
 }
