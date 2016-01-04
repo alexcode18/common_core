@@ -32,7 +32,7 @@ html {
 
 body {
 	font-family: 'Raleway', Arial, sans-serif;
-	font-size: 12pt;
+	font-size: 10pt;
 	letter-spacing: 2px;
 	background-attachment: fixed;
 }
@@ -109,10 +109,11 @@ a:hover {
 	/*width: 100%;*/
 	margin: 0 auto;
 	height: 260px;
-	border-radius: none;
-	-moz-border-radius: none;
-	-webkit-border-radius: none;
-	-o-border-radius: none;
+	padding: 0;
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-o-border-radius: 0px;
 }
 h1 {
 	/*text-transform: uppercase;*/
@@ -181,20 +182,6 @@ p {
 	padding: 10px 20px;
 }
 
-.tag {
-    background: none;
-    border: none;
-    border-radius: 0px;
-    border-top: 1px solid black;
-}
-
-.tag:hover {
-	border: none;
-	border-top: 1px solid white;
-	background: white;
-	color: black;
-}
-
 .btn {
 	background: white;
 	border-radius: 0px;
@@ -206,6 +193,20 @@ p {
 
 .btn:hover {
 	opacity: .7;
+}
+
+.tag {
+    background: #7accc8;
+    border: none;
+    border-radius: 0px;
+    border-top: 0px solid black;
+    padding: 5px 10px;
+}
+
+.tag:hover {
+	border: 0;
+	opacity: .8;
+	color: black;
 }
 
 #open_menu {
@@ -259,7 +260,7 @@ button:hover {
 
 #popup_book {
 	background: white;
-	top: 22%;
+	top: 10%;
 	left: 10%;
 	right: 10%;
 }
@@ -323,28 +324,62 @@ button:hover {
 	border-left: 1px solid lightgrey;
 }
 
+.close {
+	opacity: inherit;
+}
+
+.close:hover {
+	opacity: 1;
+}
+
 .close_button {
 	position: absolute;
 	top: 0;
 	right: -50px;
-	padding:10px 12px;
+	padding:10px 10px 10px 11px;
 	border: none;
 	z-index:200;
 }
 
+.close_button:hover {
+	background-color: #7accc8;
+	opacity: 1;
+}
+
 .post_box,
 .grid-item {
-	background-image: url(http://www.sibagraphics.com/backs/images/wood/june0611.jpg);
+	/*background-image: url(http://www.sibagraphics.com/backs/images/wood/june0611.jpg);*/
 	overflow: hidden;
-	border: 4px solid white;
+	border: 0px solid white;
 	cursor: pointer;
-	padding-top: 20px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.remove-padding-left {
+	padding-left: 0px;
+}
+
+.remove-padding-right {
+	padding-right: 0px;
+}
+
+.extra-padding-bottom {
 	padding-bottom: 20px;
 }
 
+.extra-padding-left {
+	padding-left: 20px;
+}
+
+.extra-padding-right {
+	padding-right: 20px;
+}
+
 #book_screen {
-	padding-top: 10px;
+	padding-top: 0px;
 	overflow-y: scroll;
+	background-image: url('http://www.sibagraphics.com/backs/images/wood/june0611.jpg');
 }
 
 #book_screen .row {
@@ -376,7 +411,7 @@ button:hover {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
-	padding: 30px 0px;
+	padding: 50px 20px 20px;
 }
 
 .book_hover h1 {
@@ -467,7 +502,7 @@ footer li:last-child img{
 	}
 
 	#popup_book {
-		top: 22%;
+		top: 5%;
 	}
 
 }

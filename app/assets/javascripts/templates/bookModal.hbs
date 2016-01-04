@@ -12,12 +12,13 @@
 		<a type="button" href="http://www.adamsbook.com/details.aspx?isbn={{isbn}}" target="_blank" id="buy_button">View Pricing &amp; More Info</a>
 		<div class="tags_container">
 			{{#each tags}}
-				<button class="tag" id="{{id}}">{{name}}</button>
+				<button class="tag btn" id="{{id}}">{{name}}</button>
 			{{/each}}
 		</div>
 	</div>
 	<div class="modal_item close">
-		<div class="close_button btn">x</div>
+		<div class="close_button btn glyphicon glyphicon-remove">
+		</div>
 	</div>
 </div>
 
