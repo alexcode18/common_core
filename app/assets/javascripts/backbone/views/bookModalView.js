@@ -2,7 +2,6 @@ App.Views.BookModalView = Backbone.View.extend({
 	el: '#popup_book',
 	initialize: function(){
 		this.template = HandlebarsTemplates['bookModal'];
-
 	},
 	events: {
 		'click .prev_button': 'prevBook',
@@ -57,7 +56,7 @@ App.Views.BookModalView = Backbone.View.extend({
 	renderTagBooks: function(tag){
 		pickedTag = App.tags.get($(tag.currentTarget).attr('id'));
 		console.log(pickedTag);
-		newTagList = new App.Views.TagView({model: pickedTag});
+		newTagList = new App.Views.TopicsTagView({model: pickedTag});
 		newTagList.getTagBooks();
 	}
 });

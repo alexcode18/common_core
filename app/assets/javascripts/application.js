@@ -55,15 +55,22 @@ $(function() {
 	$('body').on('mouseenter', '.post_box', renderImageHover);
 	$('body').on('mouseleave', '.post_box', hideImageHover);
 	$('body').on('mousedown', '#open_menu', displayTagMenu);
-	// $('body').on('mouseleave', '#menu', displayTagMenu);
 	$('body').on('mousedown', 'h1', refreshPage);
 	$('body').on('mousedown', '#popup_bkgd', hideModal);
+
+	windowHeight();
+	containerHeight();
 	//Infinite scroll featurez was causing the tagged book modals to break, 
 	//because not all the book information was grabbed from the backend yet.
 	$(window).scroll(function() {
 		if ($(window).scrollTop() > $('body').height() / 2){
-    	App.books.fetchMoreBooks();// ajax call get data from server and append to the div
-    }
+    		App.books.fetchMoreBooks();// ajax call get data from server and append to the div
+    	}
+	});
+
+	$(window).resize(function() {
+		windowHeight();
+		containerHeight();
 	});
 
 	// Backbone.history.start();
@@ -85,6 +92,7 @@ $(function() {
 	});
 
 	console.log('jpm on');
+
 });
 
 $(window).load( function() {
@@ -124,6 +132,18 @@ $(window).load( function() {
 
 	// $(window).on('resize', reorderGrid);
 });
+
+
+function windowHeight() {
+	var windowHeight = $( window ).height();
+	$('#jPanelMenu-menu').css('height', windowHeight);
+}
+
+function containerHeight() {
+	var height = $( window ).height() - $('header').height();
+	console.log('containerHeight', height);
+	$('#book_screen').css('height', height);
+}
 
 function refreshPage(){
 	App.tagID = undefined;

@@ -1,6 +1,6 @@
 App.Views.GradesTagView = Backbone.View.extend({
-	tagName: 'button',
-	className: 'tag col-lg-12 col-md-12 col-sm-12 col-xs-12',
+	tagName: 'div',
+	className: 'btn col-lg-12 col-md-12 col-sm-12 col-xs-12',
 	initialize: function() {
 		this.template = HandlebarsTemplates['listTag'];
 		this.renderTag();
